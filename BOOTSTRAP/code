@@ -1,0 +1,739 @@
+/* ==========================================================================
+   FILE: js/site.js
+   ONE file for ALL pages. It does two jobs:
+
+   PART 1  LIBRARIES  - loads Bootstrap (CSS + JS), Bootstrap Icons,
+                        Google Fonts and the extra libraries a page needs
+                        (AOS, Swiper, Chart.js, SweetAlert2).
+   PART 2  PAGE CODE  - the JavaScript of every page (Home, About, Categories,
+                        Mental, Gallery, FAQ, Contact). Only the code of the
+                        page you opened is run.
+
+   HOW TO USE: in every page put this ONE line inside <head>, before <style>:
+       <script src="js/site.js"></script>
+   ========================================================================== */
+(function () {
+  "use strict";
+
+
+  /* ======================================================================
+     PART 1. LIBRARIES (Bootstrap and friends)
+     ====================================================================== */
+
+  var CDN = {
+    bootstrapCss: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+    bootstrapJs:  "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
+    iconsCss:     "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css",
+    fontsCss:     "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap",
+    aosCss:       "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css",
+    aosJs:        "https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js",
+    swiperCss:    "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css",
+    swiperJs:     "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js",
+    chartJs:      "https://cdn.jsdelivr.net/npm/chart.js",
+    sweetalertJs: "https://cdn.jsdelivr.net/npm/sweetalert2@11"
+  };
+
+  /* Which extra libraries each page needs (Bootstrap, icons and fonts load on every page). */
+  var NEEDS = {
+    home:       { css: [CDN.aosCss, CDN.swiperCss], js: [CDN.aosJs, CDN.swiperJs] },
+    about:      { css: [CDN.aosCss, CDN.swiperCss], js: [CDN.aosJs, CDN.swiperJs, CDN.chartJs, CDN.sweetalertJs] },
+    categories: { css: [], js: [] },
+    mental:     { css: [], js: [] },
+    gallery:    { css: [CDN.aosCss], js: [CDN.aosJs] },
+    faq:        { css: [CDN.aosCss], js: [CDN.aosJs] },
+    contact:    { css: [CDN.aosCss], js: [CDN.aosJs] }
+  };
+
+  /* Work out which page this is from the file name (about.html -> "about"). */
+  function detectPage() {
+    var file = location.pathname.split("/").pop().replace(/\.html?$/i, "").toLowerCase();
+    return NEEDS[file] ? file : "home";   /* index.html, "/" or anything unknown = home */
+  }
+
+  var page = detectPage();
+  var needs = NEEDS[page];
+  var me = document.currentScript;         /* this <script> tag, used to keep the CSS order right */
+
+  /* Add a stylesheet BEFORE the page's own <style>, so the page's styles can override Bootstrap. */
+  function addCss(href) {
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    me.parentNode.insertBefore(link, me);
+  }
+
+  /* Load a script and tell us when it is ready. */
+  function addJs(src) {
+    return new Promise(function (resolve) {
+      var tag = document.createElement("script");
+      tag.src = src;
+      tag.onload = resolve;
+      tag.onerror = function () {          /* offline? the page still works without the library */
+        console.warn("Could not load " + src);
+        resolve();
+      };
+      document.head.appendChild(tag);
+    });
+  }
+
+  /* CSS first (order matters: Bootstrap, then the rest). */
+  [CDN.bootstrapCss, CDN.iconsCss, CDN.fontsCss].concat(needs.css).forEach(addCss);
+
+  /* Scripts one after another (order matters: Bootstrap before the page code). */
+  var scriptsReady = [CDN.bootstrapJs].concat(needs.js).reduce(function (chain, src) {
+    return chain.then(function () { return addJs(src); });
+  }, Promise.resolve());
+
+  var domReady = new Promise(function (resolve) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", resolve);
+    } else {
+      resolve();
+    }
+  });
+
+  /* When the libraries AND the page are ready, run this page's code. */
+  Promise.all([scriptsReady, domReady]).then(function () {
+    if (PAGES[page]) { PAGES[page](); }
+  });
+
+
+  /* ======================================================================
+     SMALL HELPERS (shared by several pages)
+     ====================================================================== */
+
+  function $(selector, parent) { return (parent || document).querySelector(selector); }
+  function $$(selector, parent) { return Array.prototype.slice.call((parent || document).querySelectorAll(selector)); }
+
+  /* If a picture fails to load, show a soft coloured box instead. */
+  function markBrokenImages(selector) {
+    $$(selector || "img").forEach(function (img) {
+      img.addEventListener("error", function () { img.classList.add("img-broken"); });
+    });
+  }
+
+  function startAos(options) {
+    if (window.AOS) { window.AOS.init(options); }
+  }
+
+
+  /* ======================================================================
+     PART 2. PAGE CODE (one function per page)
+     ====================================================================== */
+
+  var PAGES = {};
+
+
+  /* ---------- HOME  (index.html) ---------- */
+  PAGES.home = function () {
+
+    startAos({ duration: 800, once: true });
+
+    /* Photo slider in the "Beautiful places" section */
+    if (window.Swiper) {
+      new Swiper(".sceneSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        loop: true,
+        autoplay: { delay: 3500, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        breakpoints: { 768: { slidesPerView: 2 }, 1100: { slidesPerView: 3 } }
+      });
+    }
+
+    /* Numbers that count up when they come into view */
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) { return; }
+
+        var el = entry.target;
+        var target = Number(el.dataset.target);
+        var current = 0;
+        var step = Math.max(1, Math.ceil(target / 80));
+
+        var timer = setInterval(function () {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = current.toLocaleString();
+        }, 20);
+
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    $$(".stat-num").forEach(function (number) { counterObserver.observe(number); });
+
+    /* BMI calculator */
+    $("#bmiBtn").addEventListener("click", function () {
+      var weight = parseFloat($("#weight").value);
+      var heightCm = parseFloat($("#height").value);
+      var result = $("#bmiResult");
+
+      if (!Number.isFinite(weight) || !Number.isFinite(heightCm) || weight <= 0 || heightCm <= 0) {
+        result.textContent = "Please enter a valid weight and height.";
+        return;
+      }
+
+      var heightMetres = heightCm / 100;
+      var bmi = weight / (heightMetres * heightMetres);
+      var category;
+
+      if (bmi < 18.5)      { category = "below the healthy range"; }
+      else if (bmi < 25)   { category = "in the healthy range"; }
+      else if (bmi < 30)   { category = "above the healthy range"; }
+      else                 { category = "well above the healthy range"; }
+
+      var value = document.createElement("strong");
+      value.textContent = bmi.toFixed(1);
+
+      result.textContent = "";
+      result.append(
+        document.createTextNode("Your BMI is "),
+        value,
+        document.createTextNode(", which is " + category + ".")
+      );
+    });
+
+    /* Newsletter sign-up check */
+    $("#joinBtn").addEventListener("click", function () {
+      var email = $("#email").value.trim();
+      var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      $("#joinMsg").textContent = validEmail
+        ? "Thank you for joining!"
+        : "Please enter a valid email address.";
+    });
+
+    /* Back-to-top button */
+    var topBtn = $("#topBtn");
+
+    window.addEventListener("scroll", function () {
+      topBtn.style.display = window.scrollY > 400 ? "block" : "none";
+    });
+
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    /* Year in the footer */
+    $("#year").textContent = new Date().getFullYear();
+  };
+
+
+  /* ---------- ABOUT  (about.html) ---------- */
+  PAGES.about = function () {
+
+    startAos({ duration: 700, once: true, offset: 70 });
+
+    /* Sliders */
+    if (window.Swiper) {
+      new Swiper(".wellnessSwiper", {
+        loop: true,
+        spaceBetween: 22,
+        slidesPerView: 1,
+        autoplay: { delay: 3500, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        breakpoints: { 576: { slidesPerView: 2 }, 992: { slidesPerView: 3 } },
+        a11y: { enabled: true }
+      });
+
+      var heroBar = $("#heroProgress");
+
+      var thumbSlider = new Swiper(".thumbSwiper", {
+        spaceBetween: 10,
+        slidesPerView: 3,
+        freeMode: true,
+        watchSlidesProgress: true,
+        breakpoints: { 576: { slidesPerView: 4 }, 992: { slidesPerView: 5 } }
+      });
+
+      new Swiper(".heroSwiper", {
+        effect: "fade",
+        fadeEffect: { crossFade: true },
+        speed: 900,
+        rewind: true,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        navigation: { nextEl: ".hero-next", prevEl: ".hero-prev" },
+        thumbs: { swiper: thumbSlider },
+        on: {
+          autoplayTimeLeft: function (swiper, timeLeft, percentage) {
+            if (heroBar) { heroBar.style.width = ((1 - percentage) * 100) + "%"; }
+          }
+        }
+      });
+    }
+
+    /* Dark / light mode (remembered in the browser) */
+    var themeToggle = $("#themeToggle");
+    var themeIcon = $("#themeIcon");
+
+    function setTheme(isDark) {
+      document.body.classList.toggle("dark-mode", isDark);
+      themeIcon.className = isDark ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+      themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    }
+
+    try {
+      setTheme(localStorage.getItem("healthyLivingTheme") === "dark");
+    } catch (error) {
+      setTheme(false);
+    }
+
+    themeToggle.addEventListener("click", function () {
+      var isDark = !document.body.classList.contains("dark-mode");
+      setTheme(isDark);
+      try { localStorage.setItem("healthyLivingTheme", isDark ? "dark" : "light"); } catch (error) { }
+    });
+
+    /* Daily habit tracker */
+    var habitChecks = $$(".habit-check");
+    var progressText = $("#progressText");
+    var trackerMessage = $("#trackerMessage");
+    var resetHabits = $("#resetHabits");
+
+    var today = new Date();
+    var dateKey = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0")
+    ].join("-");
+
+    var storageKey = "healthyLivingHabits-" + dateKey;
+    var habitChart = null;
+
+    if (window.Chart) {
+      Chart.defaults.color = "#ffffff";
+
+      habitChart = new Chart($("#habitChart"), {
+        type: "doughnut",
+        data: {
+          labels: ["Completed", "Remaining"],
+          datasets: [{
+            data: [0, habitChecks.length],
+            backgroundColor: ["#3fd0c4", "#dfe9e5"],
+            borderWidth: 0,
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          cutout: "72%",
+          plugins: { legend: { position: "bottom" }, tooltip: { enabled: true } }
+        }
+      });
+    }
+
+    function getCompletedHabits() {
+      return habitChecks
+        .filter(function (checkbox) { return checkbox.checked; })
+        .map(function (checkbox) { return checkbox.value; });
+    }
+
+    function updateHabitProgress(showAlert) {
+      var completed = getCompletedHabits();
+      var total = habitChecks.length;
+      var count = completed.length;
+
+      progressText.textContent = count + " of " + total + " completed";
+
+      if (count === total) {
+        trackerMessage.textContent = "Wonderful! You completed all today's habits.";
+      } else if (count > 0) {
+        trackerMessage.textContent = "Great start! Keep taking small steps.";
+      } else {
+        trackerMessage.textContent = "Start with one small step.";
+      }
+
+      if (habitChart) {
+        habitChart.data.datasets[0].data = [count, total - count];
+        habitChart.update();
+      }
+
+      try { localStorage.setItem(storageKey, JSON.stringify(completed)); } catch (error) { }
+
+      if (showAlert && window.Swal) {
+        Swal.fire({
+          title: count === total ? "Amazing work!" : "Progress updated",
+          text: count === total
+            ? "You completed all your daily habits. Keep caring for yourself!"
+            : "You have completed " + count + " out of " + total + " habits today.",
+          icon: count === total ? "success" : "info",
+          confirmButtonColor: "#0f6b66"
+        });
+      }
+    }
+
+    function loadTodayHabits() {
+      var savedHabits = [];
+
+      try {
+        savedHabits = JSON.parse(localStorage.getItem(storageKey) || "[]");
+        if (!Array.isArray(savedHabits)) { savedHabits = []; }
+      } catch (error) {
+        savedHabits = [];
+      }
+
+      habitChecks.forEach(function (checkbox) {
+        checkbox.checked = savedHabits.indexOf(checkbox.value) !== -1;
+      });
+
+      updateHabitProgress(false);
+    }
+
+    habitChecks.forEach(function (checkbox) {
+      checkbox.addEventListener("change", function () { updateHabitProgress(true); });
+    });
+
+    resetHabits.addEventListener("click", function () {
+      function clearAll() {
+        habitChecks.forEach(function (checkbox) { checkbox.checked = false; });
+        updateHabitProgress(false);
+      }
+
+      if (window.Swal) {
+        Swal.fire({
+          title: "Reset today's habits?",
+          text: "This will clear your checklist for today.",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonText: "Yes, reset",
+          cancelButtonText: "Keep progress",
+          confirmButtonColor: "#0f6b66"
+        }).then(function (result) {
+          if (result.isConfirmed) {
+            clearAll();
+            Swal.fire({
+              title: "Checklist reset",
+              text: "You can start again whenever you're ready.",
+              icon: "success",
+              confirmButtonColor: "#0f6b66"
+            });
+          }
+        });
+      } else {
+        clearAll();
+      }
+    });
+
+    loadTodayHabits();
+
+    /* Lazy-load pictures and show a soft box if one is missing */
+    $$("img").forEach(function (image) {
+      if (!image.hasAttribute("fetchpriority")) { image.loading = "lazy"; }
+
+      image.addEventListener("error", function () {
+        image.style.background = "linear-gradient(135deg, #bfeae4, #fbd9c9)";
+        image.style.minHeight = "180px";
+        image.alt = image.alt + " (image unavailable)";
+      }, { once: true });
+    });
+
+    $("#currentYear").textContent = new Date().getFullYear();
+  };
+
+
+  /* ---------- CATEGORIES  (categories.html) ---------- */
+  PAGES.categories = function () {
+
+    markBrokenImages("img");
+
+    /* If a video file is missing, show the "no video" message */
+    $$(".video-frame video").forEach(function (video) {
+      var frame = video.closest(".video-frame");
+
+      video.addEventListener("error", function () { frame.classList.add("no-video"); });
+
+      var source = $("source", video);
+      if (source) {
+        source.addEventListener("error", function () { frame.classList.add("no-video"); });
+      }
+    });
+
+    /* Fade-in when sections scroll into view */
+    var fades = $$(".fade-up");
+
+    if ("IntersectionObserver" in window) {
+      var watcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            watcher.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      fades.forEach(function (element) { watcher.observe(element); });
+    } else {
+      fades.forEach(function (element) { element.classList.add("show"); });
+    }
+  };
+
+
+  /* ---------- MENTAL  (mental.html) ---------- */
+  PAGES.mental = function () {
+
+    /* Breathing exercise: breathe in for 4 seconds, out for 6 seconds */
+    var breathCircle = $("#breathCircle");
+    var breathText = $("#breathText");
+    var breathButton = $("#breathButton");
+
+    var breathing = false;
+    var breathInterval = null;
+    var breathTimeout = null;
+
+    function clearBreathingTimers() {
+      clearInterval(breathInterval);
+      clearTimeout(breathTimeout);
+      breathInterval = null;
+      breathTimeout = null;
+    }
+
+    function runBreathingRound() {
+      if (!breathing) { return; }
+
+      clearTimeout(breathTimeout);
+
+      breathCircle.className = "breath-circle in";
+      breathText.textContent = "Breathe in";
+
+      breathTimeout = setTimeout(function () {
+        if (!breathing) { return; }
+        breathCircle.className = "breath-circle out";
+        breathText.textContent = "Breathe out";
+      }, 4000);
+    }
+
+    breathButton.addEventListener("click", function () {
+      if (!breathing) {
+        breathing = true;
+        runBreathingRound();
+        breathInterval = setInterval(runBreathingRound, 10000);
+
+        breathButton.textContent = "Stop breathing exercise";
+        breathButton.setAttribute("aria-pressed", "true");
+      } else {
+        breathing = false;
+        clearBreathingTimers();
+
+        breathCircle.className = "breath-circle";
+        breathText.textContent = "Ready?";
+
+        breathButton.textContent = "Start breathing";
+        breathButton.setAttribute("aria-pressed", "false");
+      }
+    });
+
+    /* Mood check-in: a kind message for each mood */
+    var moodMessages = {
+      great: "It is good to feel well. Notice what is helping you and make time for those positive habits.",
+      okay: "It is okay to have ordinary days. Consider taking a short walk, drinking some water or resting for a while.",
+      low: "Be patient and gentle with yourself. Try a small activity you enjoy or talk to someone you trust.",
+      stressed: "Pause and take a few comfortable breaths. Break difficult tasks into smaller steps and seek support if needed."
+    };
+
+    var moodButtons = $$(".mood-btn");
+    var moodMessage = $("#moodMessage");
+
+    moodButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        moodButtons.forEach(function (item) {
+          item.classList.remove("active");
+          item.setAttribute("aria-pressed", "false");
+        });
+
+        button.classList.add("active");
+        button.setAttribute("aria-pressed", "true");
+
+        moodMessage.textContent = moodMessages[button.dataset.mood];
+      });
+    });
+
+    /* Accessibility: stop the carousel moving if the visitor asked for less motion */
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      bootstrap.Carousel.getOrCreateInstance($("#wellbeingCarousel"), {
+        interval: false,
+        ride: false
+      });
+    }
+  };
+
+
+  /* ---------- GALLERY  (gallery.html) ---------- */
+  PAGES.gallery = function () {
+
+    /* Picture loading, fallback picture and "missing" labels */
+    $$("img").forEach(function (img) {
+      var item = img.closest(".gal-item");
+      var slot = item ? $(".slot-label", item) : null;
+
+      img.addEventListener("load", function () {
+        img.classList.remove("is-missing", "img-broken");
+        if (slot) { slot.hidden = true; }
+      });
+
+      img.addEventListener("error", function () {
+        var fallback = img.dataset.fallback;
+
+        if (fallback && !img.dataset.triedFallback) {
+          img.dataset.triedFallback = "true";
+          img.src = fallback;
+          return;
+        }
+
+        if (img.closest('[data-cat="mine"]')) {
+          img.classList.add("is-missing");
+          if (slot) { slot.hidden = false; }
+        } else {
+          img.classList.add("img-broken");
+        }
+      });
+
+      if (img.complete && img.naturalWidth > 0 && slot) { slot.hidden = true; }
+    });
+
+    /* Filter buttons (All, Mine, ...) */
+    var buttons = $$(".filters button");
+    var items = $$(".gal-col");
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var chosen = button.dataset.f;
+
+        items.forEach(function (item) {
+          var show = chosen === "all" || item.dataset.cat === chosen;
+          item.classList.toggle("d-none", !show);
+        });
+
+        buttons.forEach(function (otherButton) {
+          var active = otherButton === button;
+          otherButton.classList.toggle("btn-teal", active);
+          otherButton.classList.toggle("btn-ghost", !active);
+          otherButton.setAttribute("aria-pressed", String(active));
+        });
+      });
+    });
+
+    /* Lightbox: click a picture to see it big */
+    var modalElement = $("#lightbox");
+    var modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+    var lightboxImage = $("#lbImg");
+    var lightboxTitle = $("#lbTitle");
+
+    $$(".gal-item").forEach(function (item) {
+      item.addEventListener("click", function () {
+        var img = $("img", item);
+
+        if (!img || img.classList.contains("is-missing") ||
+            img.classList.contains("img-broken") || !img.src) {
+          return;
+        }
+
+        var caption = $(".gal-cap", item);
+
+        lightboxImage.src = img.currentSrc || img.src;
+        lightboxImage.alt = img.alt;
+        lightboxTitle.textContent = caption ? caption.textContent.trim() : img.alt;
+
+        modal.show();
+      });
+    });
+
+    modalElement.addEventListener("hidden.bs.modal", function () {
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+      lightboxTitle.textContent = "";
+    });
+
+    startAos({ duration: 700, once: true, offset: 40 });
+  };
+
+
+  /* ---------- FAQ  (faq.html) ---------- */
+  PAGES.faq = function () {
+
+    var buttons = $$(".filters button");
+    var items = $$(".faq-item");
+    var search = $("#faqSearch");
+    var noResult = $("#noRes");
+
+    var category = "all";
+
+    function updateFaqs() {
+      var query = search.value.trim().toLowerCase();
+      var shown = 0;
+
+      items.forEach(function (item) {
+        var matchesCategory = category === "all" || item.dataset.cat === category;
+        var matchesSearch = item.textContent.toLowerCase().indexOf(query) !== -1;
+        var shouldShow = matchesCategory && matchesSearch;
+
+        item.classList.toggle("d-none", !shouldShow);
+
+        if (!shouldShow) {
+          var openPanel = $(".accordion-collapse.show", item);
+          if (openPanel) {
+            bootstrap.Collapse.getOrCreateInstance(openPanel, { toggle: false }).hide();
+          }
+        } else {
+          shown++;
+        }
+      });
+
+      noResult.classList.toggle("d-none", shown !== 0);
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        category = button.dataset.f;
+
+        buttons.forEach(function (otherButton) {
+          var isActive = otherButton === button;
+          otherButton.classList.toggle("btn-teal", isActive);
+          otherButton.classList.toggle("btn-ghost", !isActive);
+          otherButton.setAttribute("aria-pressed", String(isActive));
+        });
+
+        updateFaqs();
+      });
+    });
+
+    search.addEventListener("input", updateFaqs);
+
+    startAos({ duration: 700, once: true, offset: 40 });
+  };
+
+
+  /* ---------- CONTACT  (contact.html) ---------- */
+  PAGES.contact = function () {
+
+    markBrokenImages(".carousel img");
+
+    var form = $("#contactForm");
+    var thanks = $("#thanks");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      thanks.classList.add("d-none");
+
+      if (!form.checkValidity()) {
+        form.classList.add("was-validated");
+        form.reportValidity();
+        return;
+      }
+
+      thanks.classList.remove("d-none");
+      form.reset();
+      form.classList.remove("was-validated");
+    });
+
+    form.addEventListener("input", function () { thanks.classList.add("d-none"); });
+
+    startAos({ duration: 700, once: true, offset: 60 });
+  };
+
+})();
