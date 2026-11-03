@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>About Us | Healthy Living</title>
+    <meta name="description" content="Discover Healthy Living, our values, and simple ideas for a healthier everyday life.">
+    <meta name="theme-color" content="#0f6b66">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --teal: #0f6b66;
+            --teal-dark: #094d49;
+            --ink: #1f3a3a;
+            --cream: #fdf8f3;
+            --mint: #bfeae4;
+            --peach: #fbd9c9;
+            --card: rgba(255, 255, 255, 0.94);
+            --muted: #5a6e6c;
+            --shadow: 0 10px 30px rgba(31, 58, 58, 0.12);
+
+            --page-bg: url("images/calmbody.avif");
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            position: relative;
+            isolation: isolate;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, .brand { font-family: "Lora", serif; }
+        h2 { font-weight: 700; }
+        img { max-width: 100%; }
+        a { transition: color 0.25s ease; }
+
+        .section-space { padding: 75px 0; }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--teal);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .section-intro {
+            max-width: 650px;
+            margin: 0 auto 35px;
+            padding: 22px 26px;
+            text-align: center;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(8px);
+        }
+
+        .muted { color: var(--muted); }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                var(--page-bg) center/cover no-repeat,
+                linear-gradient(135deg, #bfeae4, #fbd9c9);
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: rgba(253, 248, 243, 0.35);
+            pointer-events: none;
+        }
+
+        .site-nav {
+            background: rgba(253, 248, 243, 0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .brand {
+            color: var(--teal);
+            font-size: 1.45rem;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .site-nav .nav-link {
+            color: var(--ink);
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.65rem;
+        }
+
+        .site-nav .nav-link:hover,
+        .site-nav .nav-link.active { color: var(--teal); }
+
+        .site-nav .dropdown-menu {
+            border: 0;
+            border-radius: 14px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: var(--shadow);
+        }
+
+        .site-nav .dropdown-item {
+            padding: 10px 14px;
+            border-radius: 8px;
+            color: var(--ink);
+        }
+
+        .site-nav .dropdown-item:hover {
+            color: var(--teal);
+            background: var(--mint);
+        }
+
+        .btn-teal {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 20px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--teal);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn-teal:hover {
+            background: var(--teal-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid #d5e0dc;
+            border-radius: 50%;
+            background: white;
+            color: var(--teal);
+        }
+
+        .page-head {
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0 90px;
+            text-align: center;
+            color: white;
+            background:
+                linear-gradient(rgba(7, 61, 57, 0.55), rgba(7, 61, 57, 0.68)),
+                url("images/balanced%20plates.avif") center/cover no-repeat,
+                #0f6b66;
+        }
+
+        .page-head h1 {
+            margin: 12px 0;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+        }
+
+        .page-head .eyebrow { color: #c9f4ed; }
+
+        .page-head p {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 9px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(5px);
+            font-size: 0.85rem;
+        }
+
+        .story-image {
+            width: 100%;
+            min-height: 340px;
+            max-height: 450px;
+            object-fit: cover;
+            border: 6px solid rgba(255, 255, 255, 0.9);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .story-copy {
+            padding: 32px 34px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(6px);
+            box-shadow: var(--shadow);
+        }
+
+        .story-copy p { color: var(--ink); }
+
+        .valuebox {
+            height: 100%;
+            padding: 28px 22px;
+            border: 1px solid rgba(15, 107, 102, 0.08);
+            border-radius: 18px;
+            background: var(--card);
+            box-shadow: var(--shadow);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .valuebox:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 35px rgba(31, 58, 58, 0.16);
+        }
+
+        .value-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            margin-bottom: 15px;
+            border-radius: 17px;
+            background: #e3f5f0;
+            color: var(--teal);
+            font-size: 1.7rem;
+        }
+
+        .valuebox h3 { font-size: 1.3rem; }
+        .valuebox p { margin-bottom: 0; color: var(--muted); }
+
+        .swiper { padding: 10px 5px 50px; }
+
+        .swiper-slide {
+            overflow: hidden;
+            border-radius: 18px;
+            background: var(--card);
+            box-shadow: var(--shadow);
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 290px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .swiper-slide:hover img { transform: scale(1.04); }
+
+        .slide-caption { padding: 20px; }
+        .slide-caption h3 { font-size: 1.3rem; }
+        .slide-caption p { margin-bottom: 0; color: var(--muted); }
+
+        .swiper-button-next,
+        .swiper-button-prev { color: var(--teal); }
+
+        .swiper-pagination-bullet-active { background: var(--teal); }
+
+        .hero-slider-wrap {
+            overflow: hidden;
+            border-radius: 24px;
+            background: #0b2f2c;
+            box-shadow: var(--shadow);
+        }
+
+        .heroSwiper {
+            position: relative;
+            height: 500px;
+            padding: 0;
+        }
+
+        .heroSwiper .swiper-slide {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            background: #0b2f2c;
+            box-shadow: none;
+        }
+
+        .heroSwiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+        }
+
+        .heroSwiper .swiper-slide:hover img { transform: scale(1); }
+
+        .heroSwiper .swiper-slide-active img {
+            animation: heroZoom 7s ease-out forwards;
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1); }
+            to   { transform: scale(1.14); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px 50px 60px;
+            color: white;
+            background: linear-gradient(to top, rgba(7, 50, 47, 0.88), rgba(7, 50, 47, 0.1) 65%);
+        }
+
+        .hero-tag,
+        .hero-overlay h3,
+        .hero-overlay p,
+        .hero-btn {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-tag {
+            align-self: flex-start;
+            margin-bottom: 10px;
+            padding: 5px 14px;
+            border-radius: 30px;
+            background: #e8590c;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .hero-overlay h3 {
+            margin: 0 0 8px;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+        }
+
+        .hero-overlay p {
+            max-width: 520px;
+            margin: 0 0 16px;
+            font-size: 1.05rem;
+        }
+
+        .hero-btn {
+            align-self: flex-start;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: white;
+            color: var(--teal);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .hero-btn:hover { background: #ffd27a; color: var(--teal-dark); }
+
+        .heroSwiper .swiper-slide-active .hero-tag { animation: slideUp 0.7s 0.3s ease-out forwards; }
+        .heroSwiper .swiper-slide-active h3        { animation: slideUp 0.7s 0.5s ease-out forwards; }
+        .heroSwiper .swiper-slide-active p         { animation: slideUp 0.7s 0.7s ease-out forwards; }
+        .heroSwiper .swiper-slide-active .hero-btn { animation: slideUp 0.7s 0.9s ease-out forwards; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            width: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffb347, #e8590c);
+        }
+
+        .hero-prev,
+        .hero-next {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(6px);
+            color: white;
+            transition: transform 0.25s, background 0.25s;
+        }
+
+        .hero-prev::after,
+        .hero-next::after { font-size: 18px; font-weight: 700; }
+
+        .hero-prev:hover,
+        .hero-next:hover {
+            background: #e8590c;
+            transform: scale(1.12);
+        }
+
+        .thumbSwiper {
+            padding: 12px;
+            background: rgba(7, 50, 47, 0.95);
+        }
+
+        .thumbSwiper .swiper-slide {
+            height: 80px;
+            overflow: hidden;
+            border: 3px solid transparent;
+            border-radius: 12px;
+            box-shadow: none;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
+        }
+
+        .thumbSwiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbSwiper .swiper-slide:hover { opacity: 0.85; }
+
+        .thumbSwiper .swiper-slide-thumb-active {
+            border-color: #ffd27a;
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 767px) {
+            .heroSwiper { height: 360px; }
+            .hero-overlay { padding: 24px 22px 40px; }
+            .hero-overlay p { font-size: 0.95rem; }
+            .thumbSwiper .swiper-slide { height: 60px; }
+        }
+
+        .video-section {
+            background: rgba(9, 77, 73, 0.72);
+            color: white;
+        }
+
+        .video-section .eyebrow { color: #ffd27a; }
+
+        .video-section .section-intro {
+            background: rgba(7, 50, 47, 0.7);
+            color: white;
+        }
+
+        .video-section .section-intro h2 { color: white; }
+        .video-section .section-intro .muted { color: #dcefeb; }
+
+        .video-card {
+            height: 100%;
+            overflow: hidden;
+            border-top: 5px solid #ffb347;
+            border-radius: 18px;
+            background: var(--card);
+            color: var(--ink);
+            box-shadow: var(--shadow);
+        }
+
+        .video-frame {
+            position: relative;
+            aspect-ratio: 9 / 16;
+             background: #000;
+        }
+
+        .video-frame video,
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            object-fit: cover;
+        }
+
+        .video-info { padding: 18px 20px 22px; }
+        .video-info h3 { font-size: 1.2rem; color: var(--teal); }
+        .video-info p { margin-bottom: 0; color: var(--muted); font-size: 0.95rem; }
+
+        .photo-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: transform 0.35s;
+        }
+
+        .photo-grid img:hover { transform: scale(1.03); }
+
+        .tracker-card {
+            height: 100%;
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+            background:
+                linear-gradient(rgba(15, 60, 58, 0.72), rgba(15, 60, 58, 0.72)),
+                url("images/mind.jpg") center/cover no-repeat,
+        var(--cream);
+            box-shadow: var(--shadow);
+        }
+
+        .tracker-card .muted { color: #dcefeb; }
+
+        .habit-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .habit-item:last-child { border-bottom: 0; }
+
+        .habit-item input {
+            width: 19px;
+            height: 19px;
+            accent-color: var(--teal);
+            cursor: pointer;
+        }
+
+        .habit-item label { flex: 1; cursor: pointer; }
+
+        .habit-item input:checked + label {
+            color: #b9cfca;
+            text-decoration: line-through;
+        }
+
+        .progress-ring { max-width: 260px; margin: 0 auto; }
+
+        .tracker-message {
+            min-height: 28px;
+            color: #c9f4ed;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            padding: 55px 20px;
+            border-radius: 24px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(120deg, var(--teal), #194c47);
+        }
+
+        .cta-section h2 { color: white; }
+
+        .btn-light-custom {
+            display: inline-block;
+            padding: 12px 23px;
+            border-radius: 8px;
+            background: white;
+            color: var(--teal);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .btn-light-custom:hover {
+            background: var(--mint);
+            color: var(--teal-dark);
+        }
+
+        .site-footer {
+            margin-top: 75px;
+            padding: 45px 0 20px;
+            background: linear-gradient(100deg, var(--peach), #fdeee5);
+        }
+
+        .foot-links { display: flex; flex-wrap: wrap; gap: 14px; }
+
+        .foot-links a {
+            color: var(--ink);
+            font-size: 0.88rem;
+            text-decoration: none;
+        }
+
+        .foot-links a:hover { color: var(--teal); }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 39px;
+            height: 39px;
+            margin-right: 6px;
+            border-radius: 50%;
+            background: white;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .foot-note {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(31, 58, 58, 0.12);
+            color: #6b625e;
+            font-size: 0.82rem;
+        }
+
+        body.dark-mode {
+            --ink: #edf5f2;
+            --cream: #142321;
+            --card: rgba(31, 48, 45, 0.97);
+            --muted: #bacbc6;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode::after { background: rgba(8, 20, 18, 0.62); }
+
+        body.dark-mode .site-nav { background: rgba(20, 35, 33, 0.97); }
+
+        body.dark-mode .site-nav .nav-link,
+        body.dark-mode .site-nav .dropdown-item { color: var(--ink); }
+
+        body.dark-mode .site-nav .dropdown-menu { background: #203431; }
+        body.dark-mode .site-nav .dropdown-item:hover { background: #31504b; }
+
+        body.dark-mode .theme-toggle {
+            background: #263d39;
+            border-color: #48635d;
+            color: #f9df9d;
+        }
+
+        body.dark-mode .section-intro { background: rgba(20, 35, 33, 0.85); }
+        body.dark-mode .story-copy { background: rgba(20, 35, 33, 0.92); }
+        body.dark-mode .value-icon { background: #294540; color: #bfeae4; }
+        body.dark-mode .video-info h3 { color: #ffd27a; }
+        body.dark-mode .site-footer { background: #203431; }
+
+        body.dark-mode .foot-links a,
+        body.dark-mode .foot-note { color: var(--ink); }
+
+        body.dark-mode .social-links a { background: #314943; color: white; }
+
+        :focus-visible {
+            outline: 3px solid var(--teal);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse { padding: 15px 0; }
+            .site-nav .navbar-nav { align-items: flex-start; }
+            .site-nav .nav-link { padding-left: 0; }
+            .nav-actions { margin-top: 12px; }
+            .foot-links { gap: 12px; }
+        }
+
+        @media (max-width: 767px) {
+            .section-space { padding: 52px 0; }
+            .page-head { padding: 75px 0 65px; }
+            .story-image { min-height: 250px; }
+            .story-copy { padding: 24px; }
+            .swiper-slide img { height: 240px; }
+            .tracker-card { padding: 22px; }
+            .site-footer { margin-top: 45px; }
+            .photo-grid img { height: 200px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg site-nav sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand brand" href="index.html">healthy living.</a>
+
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainMenu"
+                    aria-controls="mainMenu"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainMenu">
+
+                <ul class="navbar-nav mx-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="about us.html">About us</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="categories.html#eating">Healthy eating</a></li>
+                            <li><a class="dropdown-item" href="categories.html#fitness">Fitness &amp; movement</a></li>
+                            <li><a class="dropdown-item" href="categories.html#mindful">Mindful living</a></li>
+                            <li><a class="dropdown-item" href="categories.html#sleep">Better sleep</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="mental.html">Mental</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="nav-actions d-flex align-items-center gap-2">
+                    <button class="theme-toggle" id="themeToggle" type="button"
+                            aria-label="Switch colour theme" title="Switch colour theme">
+                        <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+                    </button>
+
+                    <a href="contact.html" class="btn-teal">
+                        Let's connect <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-head">
+        <div class="container" data-aos="fade-up">
+            <span class="eyebrow">Welcome to Healthy Living</span>
+
+            <h1>About Us</h1>
+
+            <p>
+                We believe healthy living is made of small, doable steps.
+                Discover simple ways to nourish your body, care for your
+                mind, and enjoy everyday life.
+            </p>
+
+            <span class="hero-badge">
+                <i class="bi bi-heart-fill me-2"></i>
+                Small steps. Meaningful change.
+            </span>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="section-space" id="our-story">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <img class="story-image"
+                             src="images/donuts.avif"
+                             alt="Fresh, colourful ingredients prepared for a healthy meal"
+                             width="1000" height="700" fetchpriority="high">
+                    </div>
+
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="story-copy">
+                            <span class="eyebrow">Our story</span>
+
+                            <h2 class="mt-2 mb-4">A healthier life starts with small choices.</h2>
+
+                            <p>
+                                Healthy Living began with a simple idea:
+                                feeling good shouldn't feel complicated. We
+                                share practical ideas on food, movement and
+                                mindfulness that fit into real, busy lives.
+                            </p>
+
+                            <p>
+                                We believe that looking after yourself does not
+                                have to mean being perfect. It means finding
+                                everyday habits that help you feel more
+                                balanced, energised and confident.
+                            </p>
+
+                            <p>
+                                From nourishing meals to moments of calm,
+                                our goal is to inspire you to take one small
+                                step at a time.
+                            </p>
+
+                            <a href="categories.html" class="btn-teal mt-3">
+                                Explore our categories <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+
+                <div class="section-intro" data-aos="fade-up">
+                    <span class="eyebrow">What guides us</span>
+                    <h2 class="mt-2">Our values</h2>
+                    <p class="muted mb-0">
+                        A healthier lifestyle should feel encouraging,
+                        practical and personal.
+                    </p>
+                </div>
+
+                <div class="row g-4 text-center">
+
+                    <div class="col-md-4" data-aos="fade-up">
+                        <article class="valuebox">
+                           
+                            <h3>Simple</h3>
+                            <p>Practical ideas and small habits that you can begin using today.</p>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <article class="valuebox">
+                           
+                            <h3>Kind</h3>
+                            <p>Progress over perfection. Give yourself patience as you grow.</p>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <article class="valuebox">
+                         
+                            <h3>Balanced</h3>
+                            <p>Care for your body and mind while making room for the things you enjoy.</p>
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space gallery-section">
+            <div class="container">
+
+                <div class="section-intro" data-aos="fade-up">
+                    <span class="eyebrow">Everyday inspiration</span>
+                    <h2 class="mt-2">A little inspiration for every day</h2>
+                    <p class="muted mb-0">
+                        Explore the different ways we can make room
+                        for healthier choices.
+                    </p>
+                </div>
+
+                <div class="swiper wellnessSwiper" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="images/p1.avif" alt="A colourful bowl of fresh vegetables"
+                                 width="900" height="600" loading="lazy">
+                            <div class="slide-caption">
+                                <h3></i>Nourish</h3>
+                                <p>Enjoy varied meals and discover foods that help you feel your best.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="images/s7.jpg" alt="A peaceful yoga and mindfulness practice"
+                                 width="900" height="600" loading="lazy">
+                            <div class="slide-caption">
+                                <h3></i>Find calm</h3>
+                                <p>Make space for breathing, reflection and moments of quiet.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="images/s14.jpg" alt="A person exercising to support their wellbeing"
+                                 width="900" height="600" loading="lazy">
+                            <div class="slide-caption">
+                                <h3></i>Keep moving</h3>
+                                <p>Choose enjoyable ways to move your body throughout the week.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="images/sleeping.webp" alt="A calm setting for rest and reflection"
+                                 width="900" height="600" loading="lazy">
+                            <div class="slide-caption">
+                                <h3></i>Rest well</h3>
+                                <p>Make time for rest and build a relaxing bedtime routine.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="images/s11.jpg" alt="A cool, relaxing environment"
+                                 width="900" height="600" loading="lazy">
+                            <div class="slide-caption">
+                                <h3></i>Relax</h3>
+                                <p>Create a cool, calm environment where you can unwind.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-button-prev" aria-label="Previous slide"></div>
+                    <div class="swiper-button-next" aria-label="Next slide"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-space" id="people-carousel">
+            <div class="container">
+
+                <div class="section-intro" data-aos="fade-up">
+                    <span class="eyebrow">Our community</span>
+                    <h2 class="mt-2">People living well</h2>
+                    <p class="muted mb-0">Click a picture below or let the slider play.</p>
+                </div>
+
+                <div class="hero-slider-wrap" data-aos="fade-up">
+
+                    <div class="swiper heroSwiper">
+                        <div class="hero-progress" id="heroProgress"></div>
+
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <img src="images/p1.avif" alt="People enjoying healthy food">
+                                <div class="hero-overlay">
+                                    <span class="hero-tag">Nourish</span>
+                                    <h3>Eat well, feel well</h3>
+                                    <p>Simple, balanced meals shared with the people you love.</p>
+                                    <a href="categories.html#eating" class="hero-btn">Healthy eating</a>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="images/run.jpg" alt="A group jogging outdoors">
+                                <div class="hero-overlay">
+                                    <span class="hero-tag">Move</span>
+                                    <h3>Keep moving every day</h3>
+                                    <p>Find exercise you enjoy and make it part of your week.</p>
+                                    <a href="categories.html#fitness" class="hero-btn">Fitness &amp; movement</a>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="images/s6.jpg" alt="People practising mindfulness">
+                                <div class="hero-overlay">
+                                    <span class="hero-tag">Calm</span>
+                                    <h3>Find a quiet moment</h3>
+                                    <p>A few deep breaths can change the shape of your day.</p>
+                                    <a href="categories.html#mindful" class="hero-btn">Mindful living</a>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="images/find.jpg" alt="People doing yoga">
+                                <div class="hero-overlay">
+                                    <span class="hero-tag">Stretch</span>
+                                    <h3>Gentle yoga for everyone</h3>
+                                    <p>Slow, easy movements that help body and mind unwind.</p>
+                                    <a href="categories.html#fitness" class="hero-btn">Learn more</a>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="images/calmbody.avif" alt="A calm place to rest">
+                                <div class="hero-overlay">
+                                    <span class="hero-tag">Rest</span>
+                                    <h3>Sleep deeply, live brightly</h3>
+                                    <p>Good rest is the base of every healthy habit.</p>
+                                    <a href="categories.html#sleep" class="hero-btn">Better sleep</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="swiper-button-prev hero-prev" aria-label="Previous slide"></div>
+                        <div class="swiper-button-next hero-next" aria-label="Next slide"></div>
+                    </div>
+
+                    <div class="swiper thumbSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="images/p1.avif" alt="Healthy food thumbnail"></div>
+                            <div class="swiper-slide"><img src="images/run.jpg" alt="Jogging thumbnail"></div>
+                            <div class="swiper-slide"><img src="images/s6.jpg" alt="Mindfulness thumbnail"></div>
+                            <div class="swiper-slide"><img src="images/find.jpg" alt="Yoga thumbnail"></div>
+                            <div class="swiper-slide"><img src="images/calmbody.avif" alt="Rest thumbnail"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-space video-section" id="videos">
+            <div class="container">
+
+                <div class="section-intro" data-aos="fade-up">
+                    <span class="eyebrow">Watch &amp; learn</span>
+                    <h2 class="mt-2">Healthy living in action</h2>
+                    <p class="muted mb-0">
+                        Short videos of people sharing how they eat well,
+                        stay active and look after their minds.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/videos15.mp4" type="video/mp4">
+                                   
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>Eating well together</h3>
+                                <p>People share simple, balanced meals.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/videos11.mp4" type="video/mp4">
+                                    
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>Moving every day</h3>
+                                <p>Easy exercise ideas for all ages.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/videos12.mp4" type="video/mp4">
+                                   
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>Calm minds</h3>
+                                <p>Breathing and mindfulness practices.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/videos13.mp4" type="video/mp4">
+                                   
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>jumping</h3>
+                                <p>Sretching our bodies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/videos16.mp4" type="video/mp4">
+                                   
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>take nutrients</h3>
+                                <p>Balancing you diet wuth different nutrients in the body.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/videos14.mp4" type="video/mp4">
+                                   
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>Have fun with friends</h3>
+                                <p>Enjoy with friends and family to calm your body and mind.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/fuuny.mp4" type="video/mp4">
+                                   
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>Have fun with friends</h3>
+                                <p>Enjoy with friends and family to calm your body and mind.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/videos10.mp4" type="video/mp4">
+                                   
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>exercising</h3>
+                                <p>Do exercises to make your fit.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="video-card">
+                            <div class="video-frame">
+                                <video controls preload="metadata" poster="">
+                                    <source src="videos/video8.mp4" type="video/mp4">
+                                   
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3>Good lifestyle</h3>
+                                <p>Dont stress live your life .</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+             
+
+         </div>
+        </section>
+
+        <section class="section-space">
+            <div class="container">
+
+                <div class="section-intro" data-aos="fade-up">
+                    <span class="eyebrow">Our community</span>
+                    <h2 class="mt-2">Everyday moments</h2>
+                    <p class="muted mb-0">Real moments of healthy living.</p>
+                </div>
+
+                <div class="row g-3 photo-grid">
+                    <div class="col-6 col-lg-3" data-aos="fade-up">
+                        <img src="images/p6.avif" alt="Friends enjoying a healthy meal together" width="600" height="400" loading="lazy">
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                        <img src="images/run.jpg" alt="A group jogging outdoors" width="600" height="400" loading="lazy">
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                        <img src="images/p8.avif" alt="A family cooking fresh vegetables" width="600" height="400" loading="lazy">
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                        <img src="images/s2.jpg" alt="A person meditating at sunrise" width="600" height="400" loading="lazy">
+                    </div>
+                    <div class="col-12 col-lg-6" data-aos="fade-up">
+                        <img src="images/find.jpg" alt="People doing yoga in a park" width="900" height="500" loading="lazy">
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                        <img src="images/s6.jpg" alt="Friends relaxing together" width="600" height="400" loading="lazy">
+                    </div>
+                    <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                        <img src="images/s10.jpg" alt="Someone resting peacefully" width="600" height="400" loading="lazy">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-space" id="habit-tracker">
+            <div class="container">
+
+                <div class="section-intro" data-aos="fade-up">
+                    <span class="eyebrow">Your daily wellbeing</span>
+                    <h2 class="mt-2">Small steps, every day</h2>
+                    <p class="muted mb-0">
+                        Check off the habits you complete today.
+                        Your progress is saved in this browser.
+                    </p>
+                </div>
+
+                <div class="row g-4 align-items-stretch">
+
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="tracker-card">
+                            <h3 class="mb-3">Today's habits</h3>
+                            <p class="muted small">Your checklist resets automatically on a new day.</p>
+
+                            <div class="habit-item">
+                                <input class="habit-check" type="checkbox" id="habitWater" value="water">
+                                <label for="habitWater"><i class="bi bi-droplet me-2"></i>Drink water regularly</label>
+                            </div>
+
+                            <div class="habit-item">
+                                <input class="habit-check" type="checkbox" id="habitMove" value="move">
+                                <label for="habitMove"><i class="bi bi-person-walking me-2"></i>Make time for movement</label>
+                            </div>
+
+                            <div class="habit-item">
+                                <input class="habit-check" type="checkbox" id="habitFruit" value="fruit">
+                                <label for="habitFruit"><i class="bi bi-apple me-2"></i>Enjoy a fruit or vegetable</label>
+                            </div>
+
+                            <div class="habit-item">
+                                <input class="habit-check" type="checkbox" id="habitCalm" value="calm">
+                                <label for="habitCalm"><i class="bi bi-wind me-2"></i>Take a mindful break</label>
+                            </div>
+
+                            <div class="habit-item">
+                                <input class="habit-check" type="checkbox" id="habitRest" value="rest">
+                                <label for="habitRest"><i class="bi bi-moon me-2"></i>Make time to rest</label>
+                            </div>
+
+                            <p class="tracker-message mt-3 mb-0" id="trackerMessage" aria-live="polite">
+                                Start with one small step.
+                            </p>
+
+                            <button type="button" class="btn-teal mt-3" id="resetHabits">
+                                <i class="bi bi-arrow-counterclockwise"></i>
+                                Reset today's habits
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="tracker-card text-center">
+                            <h3>Today's progress</h3>
+                            <p class="muted">Your completed habits at a glance.</p>
+
+                            <div class="progress-ring">
+                                <canvas id="habitChart" role="img"
+                                        aria-label="Chart showing completed and remaining daily habits">
+                                    Your habit progress chart.
+                                </canvas>
+                            </div>
+
+                            <h4 class="mt-3" id="progressText">0 of 5 completed</h4>
+                            <p class="muted mb-0">Every small step counts. Keep going!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <div class="cta-section" data-aos="zoom-in">
+                    <span class="eyebrow" style="color:#c9f4ed;">Your journey starts here</span>
+
+                    <h2 class="mt-2 mb-3">Make today a little healthier.</h2>
+
+                    <p class="mx-auto mb-4" style="max-width:600px;">
+                        Explore ideas for healthy eating, movement,
+                        mindfulness and better rest. Choose what works
+                        for you and take it one day at a time.
+                    </p>
+
+                    <a href="categories.html" class="btn-light-custom">
+                        Explore healthy living <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="row g-4 align-items-start">
+
+                <div class="col-lg-5">
+                    <a class="brand" href="index.html">healthy living.</a>
+
+                    <p class="mt-2 mb-3">A little inspiration. A healthier everyday.</p>
+
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <nav class="foot-links justify-content-lg-end" aria-label="Footer navigation">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About us</a>
+                        <a href="categories.html">Categories</a>
+                        <a href="mental.html">Mental</a>
+                        <a href="gallery.html">Gallery</a>
+                        <a href="faq.html">FAQ</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+
+            </div>
+
+            <div class="foot-note">
+                <p class="mb-0">
+                    &copy; <span id="currentYear">2026</span> Healthy Living.
+                    Made for a life well lived. For general inspiration only;
+                    not a substitute for professional medical advice.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        "use strict";
+
+        if (typeof AOS !== "undefined") {
+            AOS.init({ duration: 700, once: true, offset: 70 });
+        }
+
+        if (typeof Swiper !== "undefined") {
+            new Swiper(".wellnessSwiper", {
+                loop: true,
+                spaceBetween: 22,
+                slidesPerView: 1,
+                autoplay: { delay: 3500, disableOnInteraction: false },
+                pagination: { el: ".swiper-pagination", clickable: true },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                },
+                breakpoints: {
+                    576: { slidesPerView: 2 },
+                    992: { slidesPerView: 3 }
+                },
+                a11y: { enabled: true }
+            });
+        }
+
+        if (typeof Swiper !== "undefined") {
+            const heroBar = document.getElementById("heroProgress");
+
+            const thumbSlider = new Swiper(".thumbSwiper", {
+                spaceBetween: 10,
+                slidesPerView: 3,
+                freeMode: true,
+                watchSlidesProgress: true,
+                breakpoints: {
+                    576: { slidesPerView: 4 },
+                    992: { slidesPerView: 5 }
+                }
+            });
+
+            new Swiper(".heroSwiper", {
+                effect: "fade",
+                fadeEffect: { crossFade: true },
+                speed: 900,
+                rewind: true,
+                autoplay: { delay: 5000, disableOnInteraction: false },
+                navigation: { nextEl: ".hero-next", prevEl: ".hero-prev" },
+                thumbs: { swiper: thumbSlider },
+                on: {
+                    autoplayTimeLeft: function (swiper, timeLeft, percentage) {
+                        if (heroBar) {
+                            heroBar.style.width = ((1 - percentage) * 100) + "%";
+                        }
+                    }
+                }
+            });
+        }
+
+        const themeToggle = document.getElementById("themeToggle");
+        const themeIcon = document.getElementById("themeIcon");
+
+        function setTheme(isDark) {
+            document.body.classList.toggle("dark-mode", isDark);
+
+            themeIcon.className = isDark ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+
+            themeToggle.setAttribute(
+                "aria-label",
+                isDark ? "Switch to light mode" : "Switch to dark mode"
+            );
+        }
+
+        try {
+            setTheme(localStorage.getItem("healthyLivingTheme") === "dark");
+        } catch (error) {
+            setTheme(false);
+        }
+
+        themeToggle.addEventListener("click", function () {
+            const isDark = !document.body.classList.contains("dark-mode");
+            setTheme(isDark);
+
+            try {
+                localStorage.setItem("healthyLivingTheme", isDark ? "dark" : "light");
+            } catch (error) {
+            }
+        });
+
+        const habitChecks = [...document.querySelectorAll(".habit-check")];
+        const progressText = document.getElementById("progressText");
+        const trackerMessage = document.getElementById("trackerMessage");
+        const resetHabits = document.getElementById("resetHabits");
+
+        const today = new Date();
+        const dateKey = [
+            today.getFullYear(),
+            String(today.getMonth() + 1).padStart(2, "0"),
+            String(today.getDate()).padStart(2, "0")
+        ].join("-");
+
+        const storageKey = "healthyLivingHabits-" + dateKey;
+
+        let habitChart = null;
+
+        if (typeof Chart !== "undefined") {
+            Chart.defaults.color = "#ffffff";
+
+            habitChart = new Chart(document.getElementById("habitChart"), {
+                type: "doughnut",
+                data: {
+                    labels: ["Completed", "Remaining"],
+                    datasets: [{
+                        data: [0, habitChecks.length],
+                        backgroundColor: ["#3fd0c4", "#dfe9e5"],
+                        borderWidth: 0,
+                        hoverOffset: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: "72%",
+                    plugins: {
+                        legend: { position: "bottom" },
+                        tooltip: { enabled: true }
+                    }
+                }
+            });
+        }
+
+        function getCompletedHabits() {
+            return habitChecks
+                .filter(function (checkbox) { return checkbox.checked; })
+                .map(function (checkbox) { return checkbox.value; });
+        }
+
+        function updateHabitProgress(showAlert) {
+            const completed = getCompletedHabits();
+            const total = habitChecks.length;
+            const count = completed.length;
+
+            progressText.textContent = count + " of " + total + " completed";
+
+            if (count === total) {
+                trackerMessage.textContent = "Wonderful! You completed all today's habits.";
+            } else if (count > 0) {
+                trackerMessage.textContent = "Great start! Keep taking small steps.";
+            } else {
+                trackerMessage.textContent = "Start with one small step.";
+            }
+
+            if (habitChart) {
+                habitChart.data.datasets[0].data = [count, total - count];
+                habitChart.update();
+            }
+
+            try {
+                localStorage.setItem(storageKey, JSON.stringify(completed));
+            } catch (error) {
+            }
+
+            if (showAlert && typeof Swal !== "undefined") {
+                Swal.fire({
+                    title: count === total ? "Amazing work!" : "Progress updated",
+                    text: count === total
+                        ? "You completed all your daily habits. Keep caring for yourself!"
+                        : "You have completed " + count + " out of " + total + " habits today.",
+                    icon: count === total ? "success" : "info",
+                    confirmButtonColor: "#0f6b66"
+                });
+            }
+        }
+
+        function loadTodayHabits() {
+            let savedHabits = [];
+
+            try {
+                savedHabits = JSON.parse(localStorage.getItem(storageKey) || "[]");
+                if (!Array.isArray(savedHabits)) { savedHabits = []; }
+            } catch (error) {
+                savedHabits = [];
+            }
+
+            habitChecks.forEach(function (checkbox) {
+                checkbox.checked = savedHabits.includes(checkbox.value);
+            });
+
+            updateHabitProgress(false);
+        }
+
+        habitChecks.forEach(function (checkbox) {
+            checkbox.addEventListener("change", function () {
+                updateHabitProgress(true);
+            });
+        });
+
+        resetHabits.addEventListener("click", function () {
+            function clearAll() {
+                habitChecks.forEach(function (checkbox) { checkbox.checked = false; });
+                updateHabitProgress(false);
+            }
+
+            if (typeof Swal !== "undefined") {
+                Swal.fire({
+                    title: "Reset today's habits?",
+                    text: "This will clear your checklist for today.",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, reset",
+                    cancelButtonText: "Keep progress",
+                    confirmButtonColor: "#0f6b66"
+                }).then(function (result) {
+                    if (result.isConfirmed) {
+                        clearAll();
+                        Swal.fire({
+                            title: "Checklist reset",
+                            text: "You can start again whenever you're ready.",
+                            icon: "success",
+                            confirmButtonColor: "#0f6b66"
+                        });
+                    }
+                });
+            } else {
+                clearAll();
+            }
+        });
+
+        loadTodayHabits();
+
+        document.querySelectorAll("img").forEach(function (image) {
+            if (!image.hasAttribute("fetchpriority")) {
+                image.loading = "lazy";
+            }
+
+            image.addEventListener("error", function () {
+                image.style.background = "linear-gradient(135deg, #bfeae4, #fbd9c9)";
+                image.style.minHeight = "180px";
+                image.alt = image.alt + " (image unavailable)";
+            }, { once: true });
+        });
+
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

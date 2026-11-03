@@ -1,0 +1,122 @@
+/* ==========================================================================
+   FILE: css/base.css
+   Styles shared by EVERY page (menu, buttons, banner, sliders, footer).
+   Each page also loads its own file (css/about.css, css/faq.css ...)
+   AFTER this one, for the parts that are special to that page.
+   TIP: to change the look of the whole site, start with section 1 (colours).
+   ========================================================================== */
+
+
+/* ---------- 1. COLOURS AND FONTS ---------- */
+:root {
+  --teal:  #0f6b66;   /* main colour: buttons, links, active menu item */
+  --ink:   #1f3a3a;   /* dark colour used for text */
+  --cream: #fdf8f3;   /* soft warm background */
+  --mint:  #bfeae4;   /* light green accent */
+  --peach: #fbd9c9;   /* light orange accent */
+}
+body { font-family: Inter, sans-serif; color: var(--ink); background: var(--cream); }
+h1, h2, h3, h4, .brand { font-family: Lora, serif; }   /* headings use the Lora font */
+.muted { color: #6b7f7d; }                              /* grey helper text */
+
+
+/* ---------- 2. PAGE BACKGROUND (all pages except Home) ---------- */
+/* A photo sits behind the page and a soft cream layer covers it so text is easy to read. */
+body.inner {
+  --page-bg: url('PH1600');   /* default photo; a page can change it in <body style="--page-bg:..."> */
+  position: relative;
+  isolation: isolate;
+  background: #fbf5ee;
+}
+body.inner::before {          /* layer 1: the photo */
+  content: "";
+  position: fixed; inset: 0; z-index: -2;
+  background-image: var(--page-bg);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.1);
+  opacity: .6;
+}
+body.inner::after {           /* layer 2: soft cream cover */
+  content: "";
+  position: fixed; inset: 0; z-index: -1;
+  background: linear-gradient(rgba(253,248,243,.5), rgba(253,248,243,.72));
+}
+
+
+/* ---------- 3. MENU (top bar and Categories drop-down) ---------- */
+.site-nav { background: rgba(253,248,243,.92); backdrop-filter: blur(8px); }
+.brand { color: var(--teal); font-weight: 600; font-size: 1.4rem; text-decoration: none; }
+.site-nav .nav-link { color: var(--ink); font-size: .9rem; }
+.site-nav .nav-link.active { color: var(--teal); font-weight: 600; }   /* current page */
+
+/* The drop-down box has a picture behind it */
+.site-nav .dropdown-menu {
+  --drop-bg: url('PH600');
+  border: 0;
+  border-radius: 1rem;
+  padding: .6rem;
+  min-width: 240px;
+  background-image: linear-gradient(rgba(255,255,255,.72), rgba(255,255,255,.9)), var(--drop-bg);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
+.site-nav .dropdown-item { border-radius: .6rem; font-weight: 500; color: var(--ink); padding: .55rem .9rem; }
+.site-nav .dropdown-item:hover { background: rgba(15,107,102,.12); color: var(--teal); }
+
+
+/* ---------- 4. BUTTONS AND SMALL TEXT ---------- */
+.btn-teal  { background: var(--teal); color: #fff; border-radius: 6px; }
+.btn-teal:hover { background: #0a524e; color: #fff; }
+.btn-ghost { border: 1px solid #cfd9d6; background: #fff; }
+.filters .btn { margin: 0 .2rem .4rem; }                /* filter buttons (FAQ, Gallery) */
+
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .7rem; color: var(--teal); font-weight: 600; }
+.more    { color: var(--teal); font-size: .85rem; text-decoration: none; font-weight: 500; }
+.tag     { color: var(--teal); text-transform: uppercase; font-size: .65rem; letter-spacing: .08em; }
+
+
+/* ---------- 5. PAGE HEADER BANNER (big picture with the page title) ---------- */
+.page-head {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding: 6rem 0 4.5rem;
+  background-color: var(--teal);   /* shows if the picture is missing */
+  background-image: linear-gradient(rgba(10,70,66,.5), rgba(10,70,66,.4)), var(--bg, none);
+  background-size: cover;
+  background-position: center;
+}
+.page-head .eyebrow { color: #d9f0ec; }
+.page-head p { opacity: .95; font-size: 1.1rem; }
+
+
+/* ---------- 6. PICTURE SLIDERS (Bootstrap carousels) ---------- */
+.hero-car { border-radius: 1.2rem; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.15); }
+.hero-car img { height: 440px; object-fit: cover; }
+.small-car img { height: 280px; }                       /* smaller slider (Contact page) */
+.carousel-caption {                                     /* text over the picture */
+  background: linear-gradient(transparent, rgba(0,0,0,.55));
+  left: 0; right: 0; bottom: 0;
+  padding: 2.5rem 1rem 3rem;
+}
+.carousel-caption h3 { color: #fff; }
+.multi-img { height: 240px; object-fit: cover; border-radius: .8rem; }   /* 3-pictures slider (Gallery) */
+.multi-car .carousel-control-prev-icon,
+.multi-car .carousel-control-next-icon { background-color: rgba(15,107,102,.8); border-radius: 50%; padding: 1rem; background-size: 50%; }
+img.img-broken { background: linear-gradient(135deg, #bfeae4, #fbd9c9); min-height: 180px; }   /* shown if a picture fails */
+
+
+/* ---------- 7. FOOTER ---------- */
+.site-footer { background: linear-gradient(90deg, var(--peach), #fdeee5); padding: 2.5rem 0 1.5rem; margin-top: 2rem; }
+.foot-links a { margin-left: 1.2rem; color: var(--ink); text-decoration: none; font-size: .85rem; }
+.foot-note { color: #7a6d66; }
+
+
+/* ---------- 8. ACCESSIBILITY ---------- */
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }   /* visible keyboard focus */
+@media (prefers-reduced-motion: reduce) {                                 /* respect "reduce motion" setting */
+  * { animation: none !important; transition: none !important; }
+  [data-aos] { opacity: 1 !important; transform: none !important; }
+}

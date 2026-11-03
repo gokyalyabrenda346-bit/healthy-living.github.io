@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>FAQ | Healthy Living</title>
+  <meta name="description" content="Find answers to common questions about healthy eating, fitness, mental wellbeing, sleep, and the Healthy Living website.">
+  <meta name="theme-color" content="#0f6b66">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal: #0f6b66;
+      --teal-dark: #0a524e;
+      --ink: #1f3a3a;
+      --cream: #fdf8f3;
+      --mint: #bfeae4;
+      --peach: #fbd9c9;
+      --muted: #6b7f7d;
+      --page-bg: url("images/healthy.jpg");
+      --header-bg: url("images/12.jpg");
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--ink);
+      background: #fbf5ee;
+      line-height: 1.7;
+      position: relative;
+      isolation: isolate;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .brand {
+      font-family: "Lora", serif;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--teal);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    a {
+      transition: color 0.25s ease;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 3px;
+    }
+
+    body.inner::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--page-bg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: saturate(1.1);
+      opacity: 0.6;
+    }
+
+    body.inner::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        rgba(253, 248, 243, 0.5),
+        rgba(253, 248, 243, 0.72)
+      );
+      pointer-events: none;
+    }
+
+    .site-nav {
+      background: rgba(253, 248, 243, 0.94);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 3px 15px rgba(31, 58, 58, 0.06);
+    }
+
+    .brand {
+      color: var(--teal);
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .brand:hover {
+      color: var(--teal-dark);
+    }
+
+    .site-nav .nav-link {
+      color: var(--ink);
+      font-size: 0.9rem;
+    }
+
+    .site-nav .nav-link:hover,
+    .site-nav .nav-link.active {
+      color: var(--teal);
+    }
+
+    .site-nav .nav-link.active {
+      font-weight: 600;
+    }
+
+    .site-nav .dropdown-menu {
+      min-width: 240px;
+      padding: 0.6rem;
+      border: 0;
+      border-radius: 1rem;
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.76),
+          rgba(255, 255, 255, 0.91)
+        ),
+        url("images/bg-faq.jpg");
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .site-nav .dropdown-item {
+      padding: 0.55rem 0.9rem;
+      border-radius: 0.6rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .site-nav .dropdown-item:hover {
+      background: rgba(15, 107, 102, 0.12);
+      color: var(--teal);
+    }
+
+    .btn-teal {
+      color: #fff;
+      background: var(--teal);
+      border: 1px solid var(--teal);
+      border-radius: 6px;
+    }
+
+    .btn-teal:hover {
+      color: #fff;
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
+
+    .btn-ghost {
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #cfd9d6;
+      border-radius: 6px;
+    }
+
+    .btn-ghost:hover {
+      color: var(--teal);
+      background: #eaf6f3;
+      border-color: var(--teal);
+    }
+
+    .page-head {
+      position: relative;
+      padding: 6rem 0 4.5rem;
+      text-align: center;
+      color: #fff;
+      background-image:
+        linear-gradient(
+          rgba(10, 70, 66, 0.5),
+          rgba(10, 70, 66, 0.4)
+        ),
+        var(--header-bg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .page-head .eyebrow {
+      color: #d9f0ec;
+    }
+
+    .page-head h1 {
+      margin: 0.5rem 0;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .page-head p {
+      margin-bottom: 0;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    #faqSearch {
+      border: 1px solid #d4dfdb;
+      border-radius: 0.8rem;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 16px rgba(31, 58, 58, 0.04);
+    }
+
+    #faqSearch:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 0.2rem rgba(15, 107, 102, 0.13);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .filters .btn {
+      margin: 0 0 0.25rem;
+    }
+
+    .accordion-item {
+      margin-bottom: 0.7rem;
+      overflow: hidden;
+      border: 0;
+      border-radius: 0.8rem !important;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .accordion-button {
+      padding: 1.2rem 1.25rem;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.94);
+      font-weight: 600;
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: var(--teal);
+      background: #e3f4f1;
+      box-shadow: none;
+    }
+
+    .accordion-button:focus {
+      border-color: transparent;
+      box-shadow: 0 0 0 0.15rem rgba(15, 107, 102, 0.12);
+    }
+
+    .accordion-body {
+      padding: 1.2rem 1.25rem;
+      color: #526563;
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    #noRes {
+      padding: 1rem;
+      border-radius: 0.8rem;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .ask-box {
+      padding: 2.5rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 1.2rem;
+      background: linear-gradient(135deg, var(--mint), var(--peach));
+      box-shadow: 0 8px 25px rgba(31, 58, 58, 0.07);
+    }
+
+    .ask-box h3 {
+      margin-bottom: 0.7rem;
+    }
+
+    .ask-box p {
+      margin-bottom: 1.2rem;
+    }
+
+    .site-footer {
+      margin-top: 2rem;
+      padding: 2.5rem 0 1.5rem;
+      background: linear-gradient(90deg, var(--peach), #fdeee5);
+    }
+
+    .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+    }
+
+    .foot-links a {
+      color: var(--ink);
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    .foot-links a:hover {
+      color: var(--teal);
+    }
+
+    .foot-note {
+      color: #7a6d66;
+      border-top: 1px solid rgba(31, 58, 58, 0.1);
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .page-head {
+        padding: 4rem 1rem 3rem;
+      }
+
+      .page-head p {
+        font-size: 1rem;
+      }
+
+      .ask-box {
+        padding: 2rem 1rem;
+      }
+
+      .foot-links {
+        gap: 0.7rem 1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="inner">
+
+  <nav class="navbar navbar-expand-lg site-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">
+        healthy living.
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#menu"
+        aria-controls="menu"
+        aria-expanded="false"
+        aria-label="Open navigation menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about us.html">About us</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Categories
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="categories.html#eating">
+                  Healthy eating
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="categories.html#fitness">
+                  Fitness &amp; movement
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="categories.html#mindful">
+                  Mindful living
+                </a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="categories.html#sleep">
+                  Better sleep
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="mental.html">Mental</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="faq.html"
+              aria-current="page">
+              FAQ
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+
+        <a href="contact.html" class="btn btn-teal">
+          Live a little better ↗
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <div class="container">
+      <span class="eyebrow">Healthy Living</span>
+      <h1>Frequently Asked Questions</h1>
+      <p>Quick answers to common questions.</p>
+    </div>
+  </header>
+
+  <main class="py-5">
+    <div class="container" style="max-width: 860px;">
+
+      <div class="mb-4">
+        <label for="faqSearch" class="visually-hidden">
+          Search frequently asked questions
+        </label>
+
+        <input
+          id="faqSearch"
+          type="search"
+          class="form-control form-control-lg"
+          placeholder="Search questions..."
+          aria-label="Search questions">
+      </div>
+
+      <div
+        class="filters text-center mb-4"
+        role="group"
+        aria-label="Filter questions by category">
+
+        <button
+          type="button"
+          class="btn btn-sm btn-teal"
+          data-f="all"
+          aria-pressed="true">
+          All
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-sm btn-ghost"
+          data-f="start"
+          aria-pressed="false">
+          Getting started
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-sm btn-ghost"
+          data-f="food"
+          aria-pressed="false">
+          Food
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-sm btn-ghost"
+          data-f="move"
+          aria-pressed="false">
+          Movement
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-sm btn-ghost"
+          data-f="mind"
+          aria-pressed="false">
+          Mind &amp; sleep
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-sm btn-ghost"
+          data-f="site"
+          aria-pressed="false">
+          About the site
+        </button>
+      </div>
+
+      <div class="accordion" id="faq">
+
+        <div class="accordion-item faq-item" data-cat="start">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q0"
+              aria-expanded="false"
+              aria-controls="q0">
+              Where should I start?
+            </button>
+          </h2>
+
+          <div
+            id="q0"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              Pick one small habit, like a ten-minute walk or an extra
+              glass of water, and repeat it for a week before adding
+              anything new.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="start">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q1"
+              aria-expanded="false"
+              aria-controls="q1">
+              How long until I feel a difference?
+            </button>
+          </h2>
+
+          <div
+            id="q1"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              Many people notice changes in energy and mood within a few
+              weeks, but everyone is different. Consistency matters more
+              than speed.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="start">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q2"
+              aria-expanded="false"
+              aria-controls="q2">
+              Do I need special equipment or a gym?
+            </button>
+          </h2>
+
+          <div
+            id="q2"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              No. Walking, stretching and bodyweight exercises at home
+              are a great foundation.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="food">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q3"
+              aria-expanded="false"
+              aria-controls="q3">
+              Do I need to follow a strict diet?
+            </button>
+          </h2>
+
+          <div
+            id="q3"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              No. We focus on balance and variety, not strict rules.
+              Aim for plenty of vegetables, fruit, whole grains and
+              protein.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="food">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q4"
+              aria-expanded="false"
+              aria-controls="q4">
+              How much water should I drink?
+            </button>
+          </h2>
+
+          <div
+            id="q4"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              Needs vary with weather, activity and body size. Drink
+              regularly and use thirst and the colour of your urine as
+              general guides. Some health conditions require individual
+              fluid advice from a professional.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="food">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q5"
+              aria-expanded="false"
+              aria-controls="q5">
+              Is it okay to enjoy treats?
+            </button>
+          </h2>
+
+          <div
+            id="q5"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              Yes. A healthy life has room for foods you love, enjoyed
+              mindfully as part of a balanced eating pattern.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="move">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q6"
+              aria-expanded="false"
+              aria-controls="q6">
+              How much exercise is enough?
+            </button>
+          </h2>
+
+          <div
+            id="q6"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              For many adults, health guidelines recommend at least
+              150 minutes of moderate-intensity physical activity each
+              week. You can build up gradually, and any movement is a
+              useful starting point.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="move">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q7"
+              aria-expanded="false"
+              aria-controls="q7">
+              What if I'm very busy?
+            </button>
+          </h2>
+
+          <div
+            id="q7"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              Try short bursts of activity: use the stairs, take a brisk
+              walk at lunch, or spend five minutes stretching between
+              tasks.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="mind">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q8"
+              aria-expanded="false"
+              aria-controls="q8">
+              How can I reduce stress quickly?
+            </button>
+          </h2>
+
+          <div
+            id="q8"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              Slow breathing helps many people relax. Try breathing in
+              gently for four seconds and out for six seconds for about
+              a minute, without forcing your breath. Visit our
+              <a href="mental.html">Mental page</a> for more wellbeing
+              ideas.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="mind">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q9"
+              aria-expanded="false"
+              aria-controls="q9">
+              Why is sleep so important?
+            </button>
+          </h2>
+
+          <div
+            id="q9"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              Sleep supports mood, memory, immune function and energy.
+              A regular bedtime and a calm evening routine can help
+              improve sleep.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="site">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q10"
+              aria-expanded="false"
+              aria-controls="q10">
+              Is this medical advice?
+            </button>
+          </h2>
+
+          <div
+            id="q10"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              No. Our content provides general health and wellbeing
+              information only. Speak to a qualified health professional
+              for advice about your individual needs.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item faq-item" data-cat="site">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#q11"
+              aria-expanded="false"
+              aria-controls="q11">
+              How can I contact you?
+            </button>
+          </h2>
+
+          <div
+            id="q11"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq">
+            <div class="accordion-body">
+              Visit our
+              <a href="contact.html">Contact page</a>
+              to get in touch.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p
+        id="noRes"
+        class="text-center muted d-none mt-4"
+        role="status"
+        aria-live="polite">
+        No matching questions found.
+      </p>
+
+      <div class="ask-box text-center mt-5" data-aos="fade-up">
+        <h3>Still have a question?</h3>
+        <p>We'd love to help.</p>
+
+        <a href="contact.html" class="btn btn-teal">
+          Contact us →
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4">
+      <div>
+        <a class="brand" href="index.html">healthy living.</a>
+        <p class="small mb-0 mt-1">
+          A little inspiration. A healthier everyday.
+        </p>
+      </div>
+
+      <nav class="foot-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about us.html">About us</a>
+        <a href="categories.html">Categories</a>
+        <a href="mental.html">Mental</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="faq.html" aria-current="page">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <div class="container small mt-4 foot-note">
+      © 2026 Healthy Living. Made for a life well lived.
+      For general inspiration only; not a substitute for professional
+      medical advice.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <script>
+    "use strict";
+
+    const $ = (selector, parent = document) =>
+      parent.querySelector(selector);
+
+    const $$ = (selector, parent = document) =>
+      [...parent.querySelectorAll(selector)];
+
+    function setupFaqFilters() {
+      const buttons = $$(".filters button");
+      const items = $$(".faq-item");
+      const search = $("#faqSearch");
+      const noResult = $("#noRes");
+
+      let category = "all";
+
+      function updateFaqs() {
+        const query = search.value.trim().toLowerCase();
+        let shown = 0;
+
+        items.forEach((item) => {
+          const matchesCategory =
+            category === "all" ||
+            item.dataset.cat === category;
+
+          const matchesSearch =
+            item.textContent.toLowerCase().includes(query);
+
+          const shouldShow = matchesCategory && matchesSearch;
+
+          item.classList.toggle("d-none", !shouldShow);
+
+          if (!shouldShow) {
+            const openPanel = $(".accordion-collapse.show", item);
+
+            if (openPanel) {
+              bootstrap.Collapse
+                .getOrCreateInstance(openPanel, { toggle: false })
+                .hide();
+            }
+          } else {
+            shown++;
+          }
+        });
+
+        noResult.classList.toggle("d-none", shown !== 0);
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          category = button.dataset.f;
+
+          buttons.forEach((otherButton) => {
+            const isActive = otherButton === button;
+
+            otherButton.classList.toggle("btn-teal", isActive);
+            otherButton.classList.toggle("btn-ghost", !isActive);
+
+            otherButton.setAttribute(
+              "aria-pressed",
+              String(isActive)
+            );
+          });
+
+          updateFaqs();
+        });
+      });
+
+      search.addEventListener("input", updateFaqs);
+    }
+
+    function setupAnimations() {
+      if (window.AOS) {
+        AOS.init({
+          duration: 700,
+          once: true,
+          offset: 40
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupFaqFilters();
+      setupAnimations();
+    });
+  </script>
+
+</body>
+</html>

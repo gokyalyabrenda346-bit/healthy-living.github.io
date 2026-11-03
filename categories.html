@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore healthy eating, fitness, mindful living and better sleep with Healthy Living.">
+  <meta name="theme-color" content="#0f6b66">
+
+  <title>Categories | Healthy Living</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal: #0f6b66;
+      --teal-dark: #0a524e;
+      --ink: #1f3a3a;
+      --muted: #6b7f7d;
+      --cream: #fdf8f3;
+      --mint: #bfeae4;
+      --peach: #fbd9c9;
+      --font-heading: Lora, Georgia, "Times New Roman", serif;
+      --font-body: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 1rem;
+      --radius-lg: 1.2rem;
+      --shadow-card: 0 6px 20px rgba(0, 0, 0, .08);
+      --shadow-video: 0 10px 30px rgba(0, 0, 0, .25);
+      --shadow-menu: 0 12px 30px rgba(0, 0, 0, .18);
+      --shadow-hero: 0 10px 30px rgba(0, 0, 0, .15);
+      --menu-height: 90px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--menu-height);
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand {
+      font-family: var(--font-heading);
+    }
+
+    a {
+      color: var(--teal);
+    }
+
+    .muted {
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    .icon {
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
+      vertical-align: -.125em;
+    }
+
+    .btn-teal {
+      color: #fff;
+      background: var(--teal);
+      border: 1px solid var(--teal);
+      border-radius: var(--radius-sm);
+      padding: .65rem 1.1rem;
+    }
+
+    .btn-teal:hover {
+      color: #fff;
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .75rem;
+      font-weight: 600;
+      color: #d9f0ec;
+    }
+
+    img.img-broken {
+      min-height: 180px;
+      background: linear-gradient(135deg, var(--mint), var(--peach));
+    }
+
+    body.inner {
+      position: relative;
+      isolation: isolate;
+      background: #fbf5ee;
+    }
+
+    body.inner::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--page-bg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: saturate(1.1);
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    body.inner::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        rgba(253, 248, 243, .5),
+        rgba(253, 248, 243, .72)
+      );
+      pointer-events: none;
+    }
+
+    .site-nav {
+      background: rgba(253, 248, 243, .94);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
+    }
+
+    .site-nav .nav-link {
+      font-size: .9rem;
+      color: var(--ink);
+    }
+
+    .site-nav .nav-link:hover,
+    .site-nav .nav-link.active {
+      color: var(--teal);
+    }
+
+    .site-nav .nav-link.active {
+      font-weight: 600;
+    }
+
+    .brand {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .site-nav .dropdown-menu {
+      min-width: 240px;
+      padding: .6rem;
+      border: 0;
+      background-color: #fff;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .72), rgba(255, 255, 255, .9)),
+        url("images/best.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-menu);
+    }
+
+    .site-nav .dropdown-item {
+      padding: .55rem .9rem;
+      font-weight: 500;
+      color: var(--ink);
+      border-radius: .6rem;
+    }
+
+    .site-nav .dropdown-item:hover {
+      color: var(--teal);
+      background: rgba(15, 107, 102, .12);
+    }
+
+    @media (min-width: 992px) {
+      .site-nav .dropdown:hover > .dropdown-menu {
+        display: block;
+      }
+    }
+
+    .page-head {
+      padding: 6rem 0 4.5rem;
+      text-align: center;
+      color: #fff;
+      background-color: var(--teal);
+      background-image:
+        linear-gradient(rgba(10, 70, 66, .5), rgba(10, 70, 66, .4)),
+        var(--bg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-head h1 {
+      margin: .7rem 0;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .page-head p {
+      font-size: 1.1rem;
+      opacity: .95;
+      margin-bottom: 0;
+    }
+
+    .split-car .carousel-inner {
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-hero);
+    }
+
+    .split-car .carousel-item .row {
+      min-height: 380px;
+    }
+
+    .split-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: .6rem;
+      padding: 2rem;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .split-text h3 {
+      margin: 0;
+      font-size: 1.9rem;
+      color: var(--teal-dark);
+    }
+
+    .split-text p {
+      margin: 0;
+      opacity: .95;
+    }
+
+    .split-text .split-tip {
+      margin-top: .4rem;
+      font-size: .9rem;
+      color: var(--muted);
+      opacity: 1;
+    }
+
+    .split-text .btn {
+      margin-top: .7rem;
+    }
+
+    .split-text .btn-light {
+      color: #fff;
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .split-text .btn-light:hover {
+      color: #fff;
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
+
+    .split-car img {
+      display: block;
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
+
+    .split-car .carousel-indicators.thumbs {
+      position: static;
+      margin: 1rem 0 0;
+      justify-content: center;
+      gap: .6rem;
+    }
+
+    .split-car .thumbs button {
+      box-sizing: border-box;
+      width: 88px;
+      height: 60px;
+      margin: 0;
+      border: 3px solid transparent;
+      border-radius: .7rem;
+      background-color: var(--mint);
+      background-size: cover;
+      background-position: center;
+      opacity: .6;
+      transition: opacity .25s, border-color .25s;
+    }
+
+    .split-car .thumbs button:hover {
+      opacity: .85;
+    }
+
+    .split-car .thumbs button.active {
+      opacity: 1;
+      border-color: var(--teal);
+    }
+
+    .cat-row {
+      margin-bottom: 4rem;
+      scroll-margin-top: var(--menu-height);
+    }
+
+    .cat-row li {
+      margin-bottom: .4rem;
+    }
+
+    .cat-card {
+      height: 100%;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .95);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+    }
+
+    .cat-img {
+      display: block;
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .cat-body {
+      padding: 1.5rem;
+    }
+
+    .cat-body h2 {
+      color: var(--teal-dark);
+      font-size: 1.8rem;
+      margin-bottom: .7rem;
+    }
+
+    .cat-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0;
+    }
+
+    .video-frame {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto .6rem;
+      overflow: hidden;
+      background: #0f2f2e;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-video);
+    }
+
+    .video-frame video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-empty {
+      display: none;
+      position: absolute;
+      inset: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: 1.2rem;
+      font-size: .85rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .video-empty .icon {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+
+    .video-empty code {
+      color: var(--mint);
+      overflow-wrap: anywhere;
+    }
+
+    .no-video video {
+      display: none;
+    }
+
+    .no-video .video-empty {
+      display: flex;
+    }
+
+    .site-footer {
+      margin-top: 2rem;
+      padding: 2.5rem 0 1.5rem;
+      background: linear-gradient(90deg, var(--peach), #fdeee5);
+    }
+
+    .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1.2rem;
+    }
+
+    .foot-links a {
+      font-size: .85rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .foot-links a:hover {
+      color: var(--teal);
+      text-decoration: underline;
+    }
+
+    .foot-note {
+      color: #7a6d66;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s, transform .7s;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 767px) {
+      .page-head {
+        padding: 4rem 1rem 3.5rem;
+      }
+
+      .split-car .carousel-item .row {
+        min-height: auto;
+      }
+
+      .split-car img {
+        height: 240px;
+      }
+
+      .split-text {
+        padding: 1.5rem;
+      }
+
+      .split-car .thumbs button {
+        width: 64px;
+        height: 46px;
+      }
+
+      .cat-img {
+        height: 220px;
+      }
+
+      .cat-row {
+        margin-bottom: 3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .fade-up {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="inner" style="--page-bg: url('images/cat.avif');">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="icon-tiktok" viewBox="0 0 16 16">
+      <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+    </symbol>
+  </svg>
+
+  <nav class="navbar navbar-expand-lg site-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">healthy living.</a>
+
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#menu"
+              aria-controls="menu" aria-expanded="false"
+              aria-label="Open menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about us.html">About us</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active"
+               href="categories.html"
+               data-bs-toggle="dropdown"
+               aria-current="page">Categories</a>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="categories.html#eating">Healthy eating</a></li>
+              <li><a class="dropdown-item" href="categories.html#fitness">Fitness &amp; movement</a></li>
+              <li><a class="dropdown-item" href="categories.html#mindful">Mindful living</a></li>
+              <li><a class="dropdown-item" href="categories.html#sleep">Better sleep</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="mental.html">Mental</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+
+        <a href="contact.html" class="btn btn-teal">Live a little better ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-head" style="--bg: url('images/veg.jpg');">
+    <div class="container">
+      <span class="eyebrow">Healthy Living</span>
+      <h1>Categories</h1>
+      <p>Pick a path and start small.</p>
+    </div>
+  </header>
+
+  <section class="container mt-5" aria-label="Featured categories">
+    <div id="splitCarousel"
+         class="carousel slide carousel-fade split-car"
+         data-bs-ride="carousel"
+         data-bs-interval="5000">
+
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <div class="row g-0">
+            <div class="col-md-5 order-2 order-md-1 split-text">
+              <h3>Healthy eating</h3>
+              <p>Good food, better energy.</p>
+              <p class="split-tip">Try this: fill half your plate with colour.</p>
+              <a href="#eating" class="btn btn-light btn-sm">See all the tips</a>
+            </div>
+            <div class="col-md-7 order-1 order-md-2">
+              <img class="d-block w-100"
+                   src="images/p3.avif"
+                   alt="A colourful healthy meal">
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="row g-0">
+            <div class="col-md-5 order-2 order-md-1 split-text">
+              <h3>Fitness &amp; movement</h3>
+              <p>Move in ways you love.</p>
+              <p class="split-tip">Try this: start with a 15-minute walk.</p>
+              <a href="#fitness" class="btn btn-light btn-sm">See all the tips</a>
+            </div>
+            <div class="col-md-7 order-1 order-md-2">
+              <img class="d-block w-100"
+                   src="images/wakl.jpg"
+                   alt="A person walking outdoors">
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="row g-0">
+            <div class="col-md-5 order-2 order-md-1 split-text">
+              <h3>Mindful living</h3>
+              <p>Small moments of calm.</p>
+              <p class="split-tip">Try this: take three slow breaths before meals.</p>
+              <a href="#mindful" class="btn btn-light btn-sm">See all the tips</a>
+            </div>
+            <div class="col-md-7 order-1 order-md-2">
+              <img class="d-block w-100"
+                   src="images/cal.jpg"
+                   alt="A calm and peaceful scene">
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="row g-0">
+            <div class="col-md-5 order-2 order-md-1 split-text">
+              <h3>Better sleep</h3>
+              <p>Rest is part of health.</p>
+              <p class="split-tip">Try this: keep a regular bedtime.</p>
+              <a href="#sleep" class="btn btn-light btn-sm">See all the tips</a>
+            </div>
+            <div class="col-md-7 order-1 order-md-2">
+              <img class="d-block w-100"
+                   src="images/sp.jpg"
+                   alt="A restful bedroom">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="carousel-indicators thumbs">
+        <button type="button"
+                data-bs-target="#splitCarousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Healthy eating"
+                style="background-image:url('images/p3.avif')"></button>
+
+        <button type="button"
+                data-bs-target="#splitCarousel"
+                data-bs-slide-to="1"
+                aria-label="Fitness and movement"
+                style="background-image:url('images/wakl.jpg')"></button>
+
+        <button type="button"
+                data-bs-target="#splitCarousel"
+                data-bs-slide-to="2"
+                aria-label="Mindful living"
+                style="background-image:url('images/cal.jpg')"></button>
+
+        <button type="button"
+                data-bs-target="#splitCarousel"
+                data-bs-slide-to="3"
+                aria-label="Better sleep"
+                style="background-image:url('images/sp.jpg')"></button>
+      </div>
+    </div>
+  </section>
+
+  <main class="py-5">
+    <div class="container">
+
+      <section class="row g-4 align-items-center cat-row fade-up" id="eating">
+        <div class="col-lg-7">
+          <div class="cat-card">
+            <img class="cat-img"
+                 src="images/p3.avif"
+                 alt="Healthy and colourful food">
+
+            <div class="cat-body">
+              <h2>Healthy eating</h2>
+              <p>Good food, better energy.</p>
+              <ul>
+                <li>Fill half your plate with colourful fruits and vegetables.</li>
+                <li>Drink water throughout the day.</li>
+                <li>Plan simple, balanced and repeatable meals.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 text-center">
+          <div class="video-frame">
+            <video controls playsinline preload="metadata" poster="images/p3.avif">
+              <source src="videos/healthyeatingfood.mp4" type="video/mp4">
+            </video>
+            <div class="video-empty">
+              <svg class="icon"><use href="#icon-tiktok"></use></svg>
+              <b>Your video goes here</b>
+              <span>Save your video as <code>videos/healthyeatingfood.mp4</code></span>
+            </div>
+          </div>
+          <small class="muted">
+            <svg class="icon"><use href="#icon-tiktok"></use></svg>
+            Quick video: Healthy eating
+          </small>
+        </div>
+      </section>
+
+      <section class="row g-4 align-items-center cat-row flex-lg-row-reverse fade-up" id="fitness">
+        <div class="col-lg-7">
+          <div class="cat-card">
+            <img class="cat-img"
+                 src="images/wakl.jpg"
+                 alt="Fitness and outdoor movement">
+
+            <div class="cat-body">
+              <h2>Fitness &amp; movement</h2>
+              <p>Move in ways you love.</p>
+              <ul>
+                <li>Start with a 15-minute walk.</li>
+                <li>Add stretching to your morning routine.</li>
+                <li>Build strength gradually and consistently.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 text-center">
+          <div class="video-frame">
+            <video controls playsinline preload="metadata" poster="images/wakl.jpg">
+              <source src="videos/walking.mp4" type="video/mp4">
+            </video>
+            <div class="video-empty">
+              <svg class="icon"><use href="#icon-tiktok"></use></svg>
+              <b>Your video goes here</b>
+              <span>Save your video as <code>videos/walking.mp4</code></span>
+            </div>
+          </div>
+          <small class="muted">
+            <svg class="icon"><use href="#icon-tiktok"></use></svg>
+            Quick video: Fitness &amp; movement
+          </small>
+        </div>
+      </section>
+
+      <section class="row g-4 align-items-center cat-row fade-up" id="mindful">
+        <div class="col-lg-7">
+          <div class="cat-card">
+            <img class="cat-img"
+                 src="images/cal.jpg"
+                 alt="A peaceful environment for mindful living">
+
+            <div class="cat-body">
+              <h2>Mindful living</h2>
+              <p>Small moments of calm.</p>
+              <ul>
+                <li>Take three slow breaths before meals.</li>
+                <li>Spend five minutes in quiet reflection daily.</li>
+                <li>Put your phone away before bedtime.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 text-center">
+          <div class="video-frame">
+            <video controls playsinline preload="metadata" poster="images/cal.jpg">
+              <source src="videos/mindfulliving.mp4" type="video/mp4">
+            </video>
+            <div class="video-empty">
+              <svg class="icon"><use href="#icon-tiktok"></use></svg>
+              <b>Your video goes here</b>
+              <span>Save your video as <code>videos/mindfulliving.mp4</code></span>
+            </div>
+          </div>
+          <small class="muted">
+            <svg class="icon"><use href="#icon-tiktok"></use></svg>
+            Quick video: Mindful living
+          </small>
+        </div>
+      </section>
+
+      <section class="row g-4 align-items-center cat-row flex-lg-row-reverse fade-up" id="sleep">
+        <div class="col-lg-7">
+          <div class="cat-card">
+            <img class="cat-img"
+                 src="images/sp.jpg"
+                 alt="A comfortable bedroom for restful sleep">
+
+            <div class="cat-body">
+              <h2>Better sleep</h2>
+              <p>Rest is part of health.</p>
+              <ul>
+                <li>Keep a regular bedtime and waking time.</li>
+                <li>Dim the lights in the evening.</li>
+                <li>Keep your bedroom comfortable, cool and dark.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 text-center">
+          <div class="video-frame">
+            <video controls playsinline preload="metadata" poster="images/sp.jpg">
+              <source src="videos/sleepbee.mp4" type="video/mp4">
+            </video>
+            <div class="video-empty">
+              <svg class="icon"><use href="#icon-tiktok"></use></svg>
+              <b>Your video goes here</b>
+              <span>Save your video as <code>videos/sleepbee.mp4</code></span>
+            </div>
+          </div>
+          <small class="muted">
+            <svg class="icon"><use href="#icon-tiktok"></use></svg>
+            Quick video: Better sleep
+          </small>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div>
+        <a class="brand" href="index.html">healthy living.</a>
+        <p class="small mb-0 mt-1">A little inspiration. A healthier everyday.</p>
+      </div>
+
+      <nav class="foot-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about us.html">About us</a>
+        <a href="categories.html">Categories</a>
+        <a href="mental.html">Mental</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <div class="container small mt-4 foot-note">
+      © 2026 Healthy Living. Made for a life well lived. For general inspiration only; not a substitute for professional medical advice.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.querySelectorAll("img").forEach(function (img) {
+      img.addEventListener("error", function () {
+        img.classList.add("img-broken");
+      });
+    });
+
+    document.querySelectorAll(".video-frame video").forEach(function (video) {
+      video.addEventListener("error", function () {
+        video.closest(".video-frame").classList.add("no-video");
+      });
+
+      var source = video.querySelector("source");
+
+      if (source) {
+        source.addEventListener("error", function () {
+          video.closest(".video-frame").classList.add("no-video");
+        });
+      }
+    });
+
+    var fades = document.querySelectorAll(".fade-up");
+
+    if ("IntersectionObserver" in window) {
+      var watcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            watcher.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      fades.forEach(function (element) {
+        watcher.observe(element);
+      });
+    } else {
+      fades.forEach(function (element) {
+        element.classList.add("show");
+      });
+    }
+  </script>
+
+</body>
+</html>

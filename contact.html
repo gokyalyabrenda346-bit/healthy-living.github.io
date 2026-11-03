@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Healthy Living to share your wellness questions, stories and suggestions.">
+  <meta name="theme-color" content="#0f6b66">
+
+  <title>Contact | Healthy Living</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal: #0f6b66;
+      --teal-dark: #0a524e;
+      --ink: #1f3a3a;
+      --cream: #fdf8f3;
+      --mint: #bfeae4;
+      --peach: #fbd9c9;
+      --muted: #6b7f7d;
+      --page-bg: url("images/back.jpg");
+      --radius: 1rem;
+      --shadow-card: 0 4px 14px rgba(0, 0, 0, .07);
+      --shadow-large: 0 10px 30px rgba(0, 0, 0, .15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .brand {
+      font-family: Lora, Georgia, serif;
+    }
+
+    body.inner {
+      position: relative;
+      isolation: isolate;
+      background: #fbf5ee;
+    }
+
+    body.inner::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--page-bg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: saturate(1.1);
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    body.inner::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        rgba(253, 248, 243, .5),
+        rgba(253, 248, 243, .72)
+      );
+      pointer-events: none;
+    }
+
+    .brand {
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+
+    .site-nav {
+      background: rgba(253, 248, 243, .94);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
+    }
+
+    .site-nav .nav-link {
+      color: var(--ink);
+      font-size: .9rem;
+    }
+
+    .site-nav .nav-link:hover,
+    .site-nav .nav-link.active {
+      color: var(--teal);
+    }
+
+    .site-nav .nav-link.active {
+      font-weight: 600;
+    }
+
+    .site-nav .dropdown-menu {
+      min-width: 240px;
+      padding: .6rem;
+      border: 0;
+      border-radius: var(--radius);
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, .72),
+          rgba(255, 255, 255, .9)
+        ),
+        url("images/bac.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .18);
+    }
+
+    .site-nav .dropdown-item {
+      border-radius: .6rem;
+      font-weight: 500;
+      color: var(--ink);
+      padding: .55rem .9rem;
+    }
+
+    .site-nav .dropdown-item:hover {
+      background: rgba(15, 107, 102, .12);
+      color: var(--teal);
+    }
+
+    @media (min-width: 992px) {
+      .site-nav .dropdown:hover > .dropdown-menu {
+        display: block;
+      }
+    }
+
+    .btn-teal {
+      background: var(--teal);
+      color: #fff;
+      border: 1px solid var(--teal);
+      border-radius: 6px;
+      padding: .65rem 1.1rem;
+      transition: background .25s ease;
+    }
+
+    .btn-teal:hover {
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
+      color: #fff;
+    }
+
+    .page-head {
+      padding: 6rem 0 4.5rem;
+      text-align: center;
+      color: #fff;
+      background-color: var(--teal);
+      background-image:
+        linear-gradient(
+          rgba(10, 70, 66, .5),
+          rgba(10, 70, 66, .4)
+        ),
+        var(--bg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-head .eyebrow {
+      color: #d9f0ec;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+
+    .page-head h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin: .7rem 0;
+    }
+
+    .page-head p {
+      opacity: .95;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    .infobox {
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .94);
+      box-shadow: var(--shadow-card);
+      height: 100%;
+    }
+
+    .infobox h4 {
+      color: var(--teal-dark);
+      margin: .75rem 0;
+    }
+
+    .big {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(191, 234, 228, .55);
+      color: var(--teal);
+      font-size: 1.6rem;
+    }
+
+    .contact-section h2 {
+      color: var(--teal-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      font-weight: 500;
+    }
+
+    .form-control,
+    .form-select {
+      border: 1px solid #d6e0dc;
+      border-radius: .6rem;
+      padding: .75rem;
+      background-color: rgba(255, 255, 255, .95);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 .2rem rgba(15, 107, 102, .15);
+    }
+
+    .form-check-input:checked {
+      background-color: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .hero-car {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-large);
+      background: #fff;
+    }
+
+    .hero-car .carousel-item img {
+      display: block;
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
+
+    .carousel-caption {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 2.5rem 1rem 3rem;
+      background: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, .7)
+      );
+    }
+
+    .carousel-caption h3 {
+      color: #fff;
+      font-size: 1.7rem;
+    }
+
+    .carousel-caption p {
+      margin-bottom: 0;
+    }
+
+    img.img-broken {
+      background: linear-gradient(135deg, var(--mint), var(--peach));
+      min-height: 180px;
+    }
+
+    .site-footer {
+      background: linear-gradient(90deg, var(--peach), #fdeee5);
+      padding: 2.5rem 0 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1.2rem;
+    }
+
+    .foot-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .85rem;
+    }
+
+    .foot-links a:hover {
+      color: var(--teal);
+      text-decoration: underline;
+    }
+
+    .foot-note {
+      color: #7a6d66;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 767px) {
+      .page-head {
+        padding: 4rem 1rem 3.5rem;
+      }
+
+      .hero-car .carousel-item img {
+        height: 300px;
+      }
+
+      .contact-section {
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="inner">
+
+  <nav class="navbar navbar-expand-lg site-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">healthy living.</a>
+
+      <button class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#menu"
+              aria-controls="menu"
+              aria-expanded="false"
+              aria-label="Open menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about us.html">About us</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               href="categories.html"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">Categories</a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="categories.html#eating">Healthy eating</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="categories.html#fitness">Fitness &amp; movement</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="categories.html#mindful">Mindful living</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="categories.html#sleep">Better sleep</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="mental.html">Mental</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active"
+               href="contact.html"
+               aria-current="page">Contact</a>
+          </li>
+        </ul>
+
+        <a href="contact.html" class="btn btn-teal">Live a little better ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-head"
+          style="--bg: url('images/contact.jpg');">
+    <div class="container">
+      <span class="eyebrow">Healthy Living</span>
+      <h1>Contact</h1>
+      <p>We'd love to hear from you.</p>
+    </div>
+  </header>
+
+  <main class="py-5">
+    <div class="container">
+
+      <section class="row g-4 mb-5 text-center"
+               data-aos="fade-up"
+               aria-label="Ways to reach us">
+
+        <div class="col-md-4">
+          <div class="infobox">
+            
+            <h4>Email us</h4>
+            <p class="mb-0">
+              <a href="mailto:mirembekitara@gmail.com">
+                mirembekitara@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="infobox">
+            
+            <h4>Response time</h4>
+            <p class="mb-0">We usually reply within 2 working days.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="infobox">
+            
+            <h4>Share your story</h4>
+            <p class="mb-0">Tell us what small step worked for you.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="row g-5 align-items-start">
+
+        <section class="col-lg-7 contact-section"
+                 data-aos="fade-up"
+                 aria-label="Contact form">
+
+          <h2>Send us a message</h2>
+
+          <p>Have a question, suggestion or healthy living story? Fill in the form below.</p>
+
+          <form id="contactForm" novalidate>
+            <div class="row g-3">
+
+              <div class="col-md-6">
+                <label for="cName" class="form-label">Name</label>
+                <input id="cName"
+                       name="name"
+                       type="text"
+                       class="form-control"
+                       autocomplete="name"
+                       required>
+                <div class="invalid-feedback">
+                  Please enter your name.
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="cEmail" class="form-label">Email</label>
+                <input id="cEmail"
+                       name="email"
+                       type="email"
+                       class="form-control"
+                       autocomplete="email"
+                       required>
+                <div class="invalid-feedback">
+                  Please enter a valid email address.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="cTopic" class="form-label">Topic</label>
+                <select id="cTopic" name="topic" class="form-select" required>
+                  <option value="General question">General question</option>
+                  <option value="Healthy eating">Healthy eating</option>
+                  <option value="Fitness and movement">Fitness &amp; movement</option>
+                  <option value="Mental wellbeing">Mental wellbeing</option>
+                  <option value="Better sleep">Better sleep</option>
+                  <option value="Suggest a story">Suggest a story</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label for="cMessage" class="form-label">Message</label>
+                <textarea id="cMessage"
+                          name="message"
+                          rows="5"
+                          class="form-control"
+                          required></textarea>
+                <div class="invalid-feedback">
+                  Please write a message.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check">
+                  <input type="checkbox"
+                         class="form-check-input"
+                         id="news"
+                         name="news">
+
+                  <label class="form-check-label" for="news">
+                    Send me gentle wellness tips
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="btn btn-teal">
+                  
+                  Send message
+                </button>
+              </div>
+
+            </div>
+
+            <div id="thanks"
+                 class="alert alert-success mt-3 d-none"
+                 role="status"
+                 aria-live="polite">
+              Thank you! Your form has been validated. To send your message to Healthy Living, the form needs to be connected to an email service.
+            </div>
+          </form>
+
+        </section>
+
+        <aside class="col-lg-5" data-aos="fade-up" aria-label="Healthy living pictures">
+
+          <div id="conCar"
+               class="carousel slide hero-car"
+               data-bs-ride="carousel"
+               data-bs-interval="4000">
+
+            <div class="carousel-indicators">
+              <button type="button"
+                      data-bs-target="#conCar"
+                      data-bs-slide-to="0"
+                      class="active"
+                      aria-current="true"
+                      aria-label="Slide 1"></button>
+
+              <button type="button"
+                      data-bs-target="#conCar"
+                      data-bs-slide-to="1"
+                      aria-label="Slide 2"></button>
+
+              <button type="button"
+                      data-bs-target="#conCar"
+                      data-bs-slide-to="2"
+                      aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+
+              <div class="carousel-item active">
+                <img src="images/streng.jpg"
+                     class="d-block w-100"
+                     alt="Peaceful wellness and stretching">
+
+                <div class="carousel-caption">
+                  <h3>Say hello</h3>
+                  <p>We welcome your questions and suggestions.</p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/waka.jpg"
+                     class="d-block w-100"
+                     alt="Walking outdoors in nature">
+
+                <div class="carousel-caption">
+                  <h3>Take a step</h3>
+                  <p>One small step at a time.</p>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/breath.jpg"
+                     class="d-block w-100"
+                     alt="Quiet meditation and relaxation">
+
+                <div class="carousel-caption">
+                  <h3>Breathe</h3>
+                  <p>Make time for yourself and your wellbeing.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <button class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#conCar"
+                    data-bs-slide="prev"
+                    aria-label="Previous slide">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+
+            <button class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#conCar"
+                    data-bs-slide="next"
+                    aria-label="Next slide">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+
+          </div>
+
+          <div class="infobox mt-4">
+            <h4>
+           Good to know
+            </h4>
+            <p class="mb-0">
+              For urgent health concerns, please contact a qualified health professional or your local emergency services.
+            </p>
+          </div>
+
+          <div class="infobox mt-4">
+            <h4>
+              Prefer email?
+            </h4>
+            <p>Contact us directly using the email address below.</p>
+            <a href="mailto:mirembekitara@gmail.com" class="btn btn-teal">
+              Email Healthy Living
+            </a>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div>
+        <a class="brand" href="index.html">healthy living.</a>
+        <p class="small mb-0 mt-1">A little inspiration. A healthier everyday.</p>
+      </div>
+
+      <nav class="foot-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about us.html">About us</a>
+        <a href="categories.html">Categories</a>
+        <a href="mental.html">Mental</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <div class="container small mt-4 foot-note">
+      © 2026 Healthy Living. Made for a life well lived. For general inspiration only; not a substitute for professional medical advice.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <script>
+    const $ = selector => document.querySelector(selector);
+    const $$ = selector => [...document.querySelectorAll(selector)];
+
+    $$(".carousel img").forEach(function (img) {
+      img.addEventListener("error", function () {
+        img.classList.add("img-broken");
+      });
+    });
+
+    function setupContactForm() {
+      const form = $("#contactForm");
+      const thanks = $("#thanks");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        thanks.classList.add("d-none");
+
+        if (!form.checkValidity()) {
+          form.classList.add("was-validated");
+          form.reportValidity();
+          return;
+        }
+
+        thanks.classList.remove("d-none");
+        form.reset();
+        form.classList.remove("was-validated");
+      });
+
+      form.addEventListener("input", function () {
+        thanks.classList.add("d-none");
+      });
+    }
+
+    setupContactForm();
+
+    if (typeof AOS !== "undefined") {
+      AOS.init({
+        duration: 700,
+        once: true,
+        offset: 60
+      });
+    }
+  </script>
+
+</body>
+</html>
+```

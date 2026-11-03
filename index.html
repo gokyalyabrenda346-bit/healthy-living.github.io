@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home | Healthy Living</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --teal: #0f6b66;
+  --teal-dark: #0a524e;
+  --ink: #1f3a3a;
+  --muted: #6b7f7d;
+  --cream: #fdf8f3;
+  --mint: #cdeee8;
+  --peach: #fbd9c9;
+  --peach-soft: #fdeee5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(205,238,232,.8), transparent 45%),
+    radial-gradient(circle at 85% 55%, rgba(251,217,201,.7), transparent 45%),
+    radial-gradient(circle at 30% 90%, rgba(205,238,232,.6), transparent 40%);
+}
+
+h1, h2, h3, h4, h5, .brand {
+  font-family: Lora, serif;
+}
+
+img {
+  background: var(--mint);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.brand {
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .68rem;
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.btn-teal {
+  background: var(--teal);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.btn-teal:hover {
+  background: var(--teal-dark);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: #fff;
+  border: 1px solid #cfd9d6;
+  border-radius: 8px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.btn-ghost:hover {
+  background: var(--mint);
+}
+
+.more {
+  color: var(--teal);
+  font-size: .85rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.block {
+  padding: 4.5rem 0;
+}
+
+.block-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 500;
+}
+
+.site-nav {
+  background: rgba(253,248,243,.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 10px rgba(0,0,0,.05);
+}
+
+.site-nav .nav-link {
+  color: var(--ink);
+  font-size: .9rem;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.hero {
+  padding: 7.5rem 0 3rem;
+  min-height: 570px;
+  display: flex;
+  align-items: center;
+}
+
+.hero .container {
+  max-width: 1200px;
+}
+
+.hero .row {
+  --bs-gutter-x: 2.5rem;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 4.5vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  margin: 1.15rem 0;
+  color: var(--ink);
+}
+
+.hero h1 em {
+  color: var(--teal);
+  font-style: italic;
+}
+
+.hero .muted {
+  max-width: 440px;
+  font-size: .9rem;
+  line-height: 1.65;
+  color: #71817e;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem .85rem;
+  border-radius: 30px;
+  background: rgba(205,238,232,.9);
+  color: var(--teal);
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.hero .btn {
+  font-size: .9rem;
+  padding: .65rem .85rem;
+}
+
+.hero .btn-teal {
+  background: var(--teal);
+  border: 1px solid var(--teal);
+}
+
+.hero .btn-ghost {
+  background: #fff;
+  border: 1px solid #e3e8e5;
+}
+
+.promise {
+  font-size: .75rem;
+  color: #87938f;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--mint);
+  box-shadow: 0 14px 35px rgba(31,58,58,.12);
+}
+
+.hero-slider .carousel-item img {
+  display: block;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.hero-slider .carousel-caption {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(to bottom, transparent, rgba(20,45,42,.65));
+}
+
+.hero-slider .carousel-caption h5 {
+  font-family: Lora, serif;
+  font-size: 1rem;
+  color: #fff;
+  margin: 0;
+}
+
+.hero-slider .carousel-indicators {
+  margin-bottom: .55rem;
+}
+
+.hero-slider .carousel-control-prev,
+.hero-slider .carousel-control-next {
+  width: 10%;
+}
+
+.strip {
+  background: var(--mint);
+  padding: 1.2rem 0;
+}
+
+.strip i {
+  color: var(--teal);
+  margin-right: .5rem;
+}
+
+.strip span {
+  font-size: .88rem;
+  font-weight: 500;
+}
+
+.why-img {
+  border-radius: 18px;
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  box-shadow: 0 14px 34px rgba(0,0,0,.15);
+}
+
+.check li {
+  list-style: none;
+  margin-bottom: .8rem;
+  display: flex;
+  gap: .6rem;
+}
+
+.check i {
+  color: var(--teal);
+  font-size: 1.2rem;
+}
+
+.cat {
+  background: #fff;
+  border: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,.07);
+  transition: transform .3s;
+}
+
+.cat:hover {
+  transform: translateY(-6px);
+}
+
+.cat img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.tag {
+  color: var(--teal);
+  text-transform: uppercase;
+  font-size: .62rem;
+  letter-spacing: .1em;
+  font-weight: 600;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.food {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 250px;
+}
+
+.food img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s;
+}
+
+.food:hover img {
+  transform: scale(1.08);
+}
+
+.food span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.4rem 1rem .8rem;
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(transparent, rgba(0,0,0,.7));
+}
+
+.stats {
+  background: linear-gradient(135deg, var(--mint), var(--peach-soft));
+  background:linear-gradient(rgba(15,60,58,.6), rgba(15,60,58,.6)), 
+  url("images/answers.jpg")center/cover/ no-repeat;
+}
+
+.stat-num {
+  font-family: Lora, serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.reminder {
+  background: linear-gradient(135deg, var(--peach), var(--peach-soft));
+  text-align: center;
+  padding: 4.5rem 0;
+  background:linear-gradient(rgba(15,60,58,.6), rgba(15,60,58,.6)), 
+  url("images/answers.jpg")center/cover/ no-repeat;
+}
+
+.banner {
+  background:
+    linear-gradient(rgba(15,60,58,.6), rgba(15,60,58,.6)),
+    url("images/dailyhabits.jpg")center/cover no-repeat;
+  background-color: var(--teal);
+  color: #fff;
+  text-align: center;
+}
+
+.tip {
+  background: rgba(255,255,255,.14);
+  border-radius: 12px;
+  padding: 1.6rem;
+}
+
+.tip i {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.plan .nav-link {
+  color: var(--ink);
+  border-radius: 30px;
+  padding: .5rem 1.4rem;
+}
+
+.plan .nav-link.active {
+  background: var(--teal);
+  color: #fff;
+}
+
+.plan-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+.plan-img {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.read img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.read h5 {
+  font-size: 1.05rem;
+  margin: .8rem 0 .4rem;
+}
+
+.read .meta {
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  margin-top: .8rem;
+}
+
+.video-card video {
+  width: 100%;
+  border-radius: 14px;
+  background: #000;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--teal);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0,0,0,.5);
+}
+
+.calc {
+  background:
+    linear-gradient(
+      rgba(205,238,232,.65),
+      rgba(253,238,229,.65)
+    ),
+    url("images/calc.jpg")center/cover no-repeat;
+  padding: 5rem 0;
+}
+
+.calc-card {
+  background: rgba(255,255,255,.96);
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 22px;
+  padding: 2.5rem;
+  box-shadow: 0 15px 40px rgba(31,58,58,.18);
+}
+
+#faq {
+  background:
+    linear-gradient(
+      rgba(248,252,244,.91),
+      rgba(237,248,239,.91)
+    ),
+   url("images/answers.jpg")center/cover no-repeat;
+}
+
+.accordion-button:not(.collapsed) {
+  background: var(--mint);
+  color: var(--ink);
+}
+
+.accordion-item {
+  border: 0;
+  margin-bottom: 10px;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,.06);
+}
+
+#newsletter {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background:
+    linear-gradient(
+      rgba(253,248,243,.55),
+      rgba(253,238,229,.70)
+    ),
+   url("images/diet.jpg")center/cover no-repeat;
+}
+
+.news {
+  background: rgba(15,107,102,.94);
+  color: #fff;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(31,58,58,.15);
+}
+
+.site-footer {
+  background:
+    linear-gradient(
+      rgba(253,217,201,.88),
+      rgba(253,238,229,.91)
+    ),
+  url("images/eat freshfeelgood.avif")center/cover no-repeat;
+  padding: 2.5rem 0 1.5rem;
+  margin-top: 3rem;
+}
+
+.foot-links a {
+  margin-left: 1.2rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: .85rem;
+}
+
+.foot-links a:hover {
+  color: var(--teal);
+}
+
+.foot-note {
+  color: #7a6d66;
+}
+
+#topBtn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 99;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  font-size: 1.3rem;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+}
+
+@media (max-width: 991.98px) {
+  .hero {
+    padding: 7rem 0 3rem;
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 6vw, 3.1rem);
+  }
+
+  .hero-slider .carousel-item img {
+    height: 350px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero {
+    padding: 6.5rem 0 2.5rem;
+  }
+
+  .hero .row {
+    --bs-gutter-x: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.35rem;
+    letter-spacing: -1px;
+  }
+
+  .hero .btn {
+    font-size: .82rem;
+    margin-bottom: .5rem;
+  }
+
+  .hero-slider .carousel-item img {
+    height: 270px;
+  }
+
+  .calc {
+    padding: 3rem 0;
+  }
+
+  .calc-card {
+    padding: 1.5rem;
+  }
+
+  .news {
+    padding: 2rem 1rem;
+  }
+
+  .foot-links {
+    margin-top: 1rem;
+  }
+
+  .foot-links a {
+    margin-left: 0;
+    margin-right: .9rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top site-nav">
+  <div class="container">
+    <a class="brand" href="index.html">healthy living.</a>
+
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#menu"
+      aria-controls="menu" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav mx-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about us.html">About us</a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown" aria-current="page">Categories</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="categories.html#eating">Healthy eating</a></li>
+              <li><a class="dropdown-item" href="categories.html#fitness">Fitness &amp; movement</a></li>
+              <li><a class="dropdown-item" href="categories.html#mindful">Mindful living</a></li>
+              <li><a class="dropdown-item" href="categories.html#sleep">Better sleep</a></li>
+            </ul>
+          </li>
+        <li class="nav-item"><a class="nav-link" href="mental.html">Mental</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+
+      <a class="btn btn-teal btn-sm px-3" href="#plan">
+        Live a little better <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="pill"><i class="bi bi-leaf"></i> A happier, healthier you</span>
+          <h1>Healthy living. One small step <em>at a time.</em></h1>
+          <p class="muted mb-4">
+            Nourish your body. Move with joy. Find your balance.
+            Simple inspiration for a life that feels good.
+          </p>
+          <a href="#categories" class="btn btn-teal btn-lg me-2">
+            Explore healthy living <i class="bi bi-arrow-right"></i>
+          </a>
+          <a href="about us.html" class="btn btn-ghost btn-lg">Get to know us</a>
+          <p class="promise mt-4 mb-0">
+            <i class="bi bi-check2 text-success"></i>
+            No perfection needed. Just a little progress.
+          </p>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left">
+          <div id="heroSlider"
+            class="hero-slider carousel slide carousel-fade"
+            data-bs-ride="carousel" data-bs-interval="4000">
+
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="5" aria-label="Slide 6"></button>
+              <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="6" aria-label="Slide 7"></button>
+            </div>
+
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/eat.avif" alt="Fresh fruit and smoothie bowls">
+                <div class="carousel-caption"><h5>Eat fresh, feel good</h5></div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/salad.jpg" alt="Healthy salad bowl">
+                <div class="carousel-caption"><h5>Colourful, balanced plates</h5></div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/move withjoy.avif" alt="Running outdoors">
+                <div class="carousel-caption"><h5>Move with joy</h5></div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/calmbody.avif" alt="Yoga and calm">
+                <div class="carousel-caption"><h5>Calm body, calm mind</h5></div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/freshair.avif" alt="Mountains">
+                <div class="carousel-caption"><h5>Fresh air, open space</h5></div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/qiuet.jpg" alt="Quiet forest">
+                <div class="carousel-caption"><h5>Take a quiet walk</h5></div>
+              </div>
+
+              <div class="carousel-item">
+                <img src="images/findyobalance.avif" alt="Lake and mountains">
+                <div class="carousel-caption"><h5>Find your balance</h5></div>
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button"
+              data-bs-target="#heroSlider" data-bs-slide="prev"
+              aria-label="Previous slide">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button"
+              data-bs-target="#heroSlider" data-bs-slide="next"
+              aria-label="Next slide">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="strip">
+    <div class="container">
+      <div class="row text-center g-2">
+        <div class="col-md-4"><span><i class="bi bi-flower2"></i>Small habits, lasting change</span></div>
+        <div class="col-md-4"><span><i class="bi bi-heart"></i>Good for body &amp; mind</span></div>
+        <div class="col-md-4"><span><i class="bi bi-brightness-high"></i>Made for real life</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="why">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <img class="why-img"
+            src="images/smallhab.avif"
+            alt="Fresh healthy salad bowl">
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left">
+          <p class="eyebrow">Why it matters</p>
+          <h2 class="block-title">Small habits, big changes.</h2>
+          <p class="muted mb-4">
+            You don't need a perfect routine. Start with a few simple choices
+            and build from there.
+          </p>
+
+          <ul class="check p-0">
+            <li><i class="bi bi-check-circle-fill"></i><span>More energy for work, study and family</span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span>A stronger body and a healthier heart</span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span>Better mood and less stress</span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span>Deeper sleep and clearer thinking</span></li>
+          </ul>
+
+          <a href="about.html" class="btn btn-teal mt-2">About us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block pt-0" id="categories">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-4" data-aos="fade-up">
+        <div>
+          <p class="eyebrow mb-1">Your path to feeling good</p>
+          <h2 class="block-title mb-1">A little balance goes a long way.</h2>
+          <p class="muted mb-0">Explore the everyday essentials of a healthier, happier life.</p>
+        </div>
+        <a class="more d-none d-md-inline" href="nutrition.html">All categories <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="card cat h-100">
+            <img src="images/soup.jpg" alt="Healthy salad bowl">
+            <div class="card-body">
+              <span class="tag">Nourish your body</span>
+              <h5 class="mt-1">Healthy eating</h5>
+              <p class="muted small">Good food, better energy. Everyday inspiration for balanced plates.</p>
+              <a class="more" href="nutrition.html">Explore category <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="120">
+          <div class="card cat h-100">
+            <img src="images/Fitness and movement.avif" alt="Woman running in the forest">
+            <div class="card-body">
+              <span class="tag">Find your flow</span>
+              <h5 class="mt-1">Fitness &amp; movement</h5>
+              <p class="muted small">Move in ways you love and build strength at your own pace.</p>
+              <a class="more" href="fitness.html">Explore category <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="240">
+          <div class="card cat h-100">
+            <img src="images/calmbody.avif" alt="Woman meditating">
+            <div class="card-body">
+              <span class="tag">Make room for calm</span>
+              <h5 class="mt-1">Mindful living</h5>
+              <p class="muted small">Small moments of mindfulness for a more grounded, present you.</p>
+              <a class="more" href="mental.html">Explore category <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block pt-0" id="food">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <p class="eyebrow">Eat the rainbow</p>
+        <h2 class="block-title">Healthy food that looks as good as it tastes.</h2>
+      </div>
+
+      <div class="food-grid">
+        <div class="food" data-aos="zoom-in">
+          <img src="images/frshveg.avif" alt="Fresh vegetables">
+          <span>Fresh vegetables</span>
+        </div>
+
+        <div class="food" data-aos="zoom-in" data-aos-delay="100">
+          <img src="images/breakfast.avif" alt="Healthy breakfast">
+          <span>Healthy breakfast</span>
+        </div>
+
+        <div class="food" data-aos="zoom-in" data-aos-delay="200">
+          <img src="images/colourful.avif" alt="Colourful produce">
+          <span>Colourful produce</span>
+        </div>
+
+        <div class="food" data-aos="zoom-in">
+          <img src="images/salad.jpg" alt="Salad bowl">
+          <span>Salad bowls</span>
+        </div>
+
+        <div class="food" data-aos="zoom-in" data-aos-delay="100">
+          <img src="images/balanced plates.avif" alt="Balanced plate">
+          <span>Balanced plates</span>
+        </div>
+
+        <div class="food" data-aos="zoom-in" data-aos-delay="200">
+          <img src="images/fruit and greens.avif" alt="Fruit and greens">
+          <span>Fruit and greens</span>
+        </div>
+
+         <div class="food" data-aos="zoom-in" data-aos-delay="200">
+          <img src="images/lady.avif" alt="Take your time">
+          <span>Fruit and greens</span>
+        </div>
+
+        <div class="food" data-aos="zoom-in" data-aos-delay="200">
+          <img src="images/diet.jpg" alt="Exercise">
+          <span>Fruit and greens</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="block stats" id="stats">
+    <div class="container text-center">
+      <div class="row g-4">
+        <div class="col-6 col-md-3" data-aos="fade-up">
+          <div class="stat-num" data-target="120">0</div>
+          <p class="mb-0">Health articles</p>
+        </div>
+
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-num" data-target="50">0</div>
+          <p class="mb-0">Easy recipes</p>
+        </div>
+
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-num" data-target="35">0</div>
+          <p class="mb-0">Workout videos</p>
+        </div>
+
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-num" data-target="10000">0</div>
+          <p class="mb-0">Happy readers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reminder" id="reminder" data-aos="fade-up">
+    <div class="container">
+      <p class="eyebrow"><i class="bi bi-flower1"></i> A gentle reminder</p>
+      <h2 class="block-title">You don't have to change everything.</h2>
+      <p class="muted mx-auto" style="max-width:560px">
+        A nourishing meal. A walk outside. A moment to breathe.
+        Sometimes the smallest things make the biggest difference.
+      </p>
+      <a href="#plan" class="btn btn-ghost">Find your small step <i class="bi bi-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <section class="block banner" id="tips">
+    <div class="container">
+      <h2 class="block-title" data-aos="fade-up">Three daily habits</h2>
+      <p class="mb-5" data-aos="fade-up">Small steps, repeated every day, make the biggest difference.</p>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="tip">
+            
+            <h5>Drink water</h5>
+            <p class="mb-0">Aim for 6 to 8 glasses a day.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="120">
+          <div class="tip">
+          
+            <h5>Move for 30 minutes</h5>
+            <p class="mb-0">A brisk walk counts.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="240">
+          <div class="tip">
+           
+            <h5>Sleep 7 to 9 hours</h5>
+            <p class="mb-0">Keep a regular bedtime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block plan" id="plan">
+    <div class="container">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <p class="eyebrow">Your starter plan</p>
+        <h2 class="block-title">Begin this week.</h2>
+      </div>
+
+      <ul class="nav nav-pills justify-content-center mb-4" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-eat" type="button" role="tab">
+            <i class="bi bi-apple"></i> Eat
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-move" type="button" role="tab">
+            <i class="bi bi-bicycle"></i> Move
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-mind" type="button" role="tab">
+            <i class="bi bi-emoji-smile"></i> Mind
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" data-aos="fade-up">
+        <div class="tab-pane fade show active" id="tab-eat" role="tabpanel">
+          <div class="plan-box">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-7">
+                <h4>Eat more colour</h4>
+                <ul>
+                  <li>Add one fruit or vegetable to every meal</li>
+                  <li>Swap sugary drinks for water</li>
+                  <li>Cook at home three times this week</li>
+                  <li>Keep healthy snacks like nuts and fruit nearby</li>
+                </ul>
+              </div>
+              <div class="col-md-5">
+                <img class="plan-img" src="images/mind.jpg" alt="Vegetables">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-move" role="tabpanel">
+          <div class="plan-box">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-7">
+                <h4>Move a little more</h4>
+                <ul>
+                  <li>Walk for 20 to 30 minutes each day</li>
+                  <li>Take the stairs when you can</li>
+                  <li>Stretch for five minutes in the morning</li>
+                  <li>Try one home workout this week</li>
+                </ul>
+              </div>
+              <div class="col-md-5">
+                <img class="plan-img" src="images/move withjoy.avif" alt="Cycling">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-mind" role="tabpanel">
+
+
+          <div class="plan-box">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-7">
+                <h4>Look after your mind</h4>
+                
+                <ul>
+                  <li>Take five slow, deep breaths when you feel stressed</li>
+                  <li>Switch off screens an hour before bed</li>
+                  <li>Spend time outside every day</li>
+                  <li>Talk to a friend or family member regularly</li>
+                </ul>
+              </div>
+              <div class="col-md-5">
+                <img class="plan-img" src="images/m6.jpg" alt="Yoga">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block pt-0" id="reads">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-4" data-aos="fade-up">
+        <div>
+          <p class="eyebrow mb-1">Fresh inspiration</p>
+          <h2 class="block-title mb-0">Good reads for better days.</h2>
+        </div>
+        <a class="more d-none d-md-inline" href="nutrition.html">Explore all reads <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4 read" data-aos="fade-up">
+          <img src="images/balanced plates.avif" alt="Balanced plate">
+          <div class="meta"><span class="tag">Healthy eating</span><span>5 min read</span></div>
+          <h5>A balanced plate, without the overthinking</h5>
+          <a class="more" href="nutrition.html">Read the story <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="col-md-4 read" data-aos="fade-up" data-aos-delay="120">
+          <img src="images/Fitness and movement.avif" alt="Walk in the forest">
+          <div class="meta"><span class="tag">Fitness &amp; movement</span><span>4 min read</span></div>
+          <h5>The everyday magic of a simple walk</h5>
+          <a class="more" href="fitness.html">Read the story <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="col-md-4 read" data-aos="fade-up" data-aos-delay="240">
+          <img src="images/find.jpg" alt="Quiet morning with a warm drink">
+          <div class="meta"><span class="tag">Mindful living</span><span>3 min read</span></div>
+          <h5>A little pause can change your whole day</h5>
+          <a class="more" href="mental.html">Read the story <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block pt-0" id="videos">
+    <div class="container">
+      <div class="mb-4" data-aos="fade-up">
+        <p class="eyebrow mb-1">Watch &amp; move</p>
+        <h2 class="block-title mb-1">Healthy living in motion.</h2>
+        <p class="muted">Short clips to inspire your everyday, straight from TikTok.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-8 col-md-4 col-lg-3 video-card" data-aos="fade-up">
+          <video controls preload="metadata" src="videos/video1.mp4"></video>
+        </div>
+        <div class="col-8 col-md-4 col-lg-3 video-card" data-aos="fade-up" data-aos-delay="120">
+          <video controls preload="metadata" src="videos/video2.mp4"></video>
+        </div>
+        <div class="col-8 col-md-4 col-lg-3 video-card" data-aos="fade-up" data-aos-delay="240">
+          <video controls preload="metadata" src="videos/video3.mp4"></video>
+        </div>
+        <div class="col-8 col-md-4 col-lg-3 video-card" data-aos="fade-up" data-aos-delay="240">
+          <video controls preload="metadata" src="videos/video7.mp4"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block pt-0" id="scenery">
+    <div class="container">
+      <div class="mb-4" data-aos="fade-up">
+        <p class="eyebrow mb-1">Gallery</p>
+        <h2 class="block-title">Beautiful places to breathe.</h2>
+      </div>
+
+      <div class="swiper sceneSwiper" data-aos="fade-up">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="images/s4.webp" alt="Mountain valley">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/sceenes1.avif" alt="Misty forest">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/s2.jpg" alt="Lake and mountains">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/s3.jpg" alt="Beach">
+          </div>
+          <div class="swiper-slide">
+            <img src="images/s14.jpg" alt="Green fields">
+            
+          </div>
+        </div>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination mt-3 position-relative"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block calc" id="calculator">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7" data-aos="fade-up">
+          <div class="text-center mb-4">
+            <p class="eyebrow">Quick tool</p>
+            <h2 class="block-title">BMI calculator</h2>
+          </div>
+
+          <div class="calc-card">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label" for="weight">Weight (kg)</label>
+                <input id="weight" type="number" min="1" step="any"
+                  class="form-control" placeholder="e.g. 70">
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label" for="height">Height (cm)</label>
+                <input id="height" type="number" min="1" step="any"
+                  class="form-control" placeholder="e.g. 170">
+              </div>
+            </div>
+
+            <button id="bmiBtn" class="btn btn-teal mt-3 w-100" type="button">
+              Calculate
+            </button>
+
+            <p id="bmiResult" class="text-center mt-3 mb-1" aria-live="polite"></p>
+            <p class="small muted text-center mb-0">
+              BMI is only a rough guide. For personal advice, speak to a doctor or health worker.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="text-center mb-4">
+            <p class="eyebrow">Questions</p>
+            <h2 class="block-title">Quick answers.</h2>
+          </div>
+
+          <div class="accordion" id="faqList">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#q1"
+                  aria-expanded="true" aria-controls="q1">
+                  How much water should I drink each day?
+                </button>
+              </h2>
+              <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqList">
+                <div class="accordion-body">
+                  Most adults do well with about 6 to 8 glasses a day.
+                  You may need more in hot weather or when you exercise.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#q2"
+                  aria-expanded="false" aria-controls="q2">
+                  How much exercise do I need?
+                </button>
+              </h2>
+              <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                <div class="accordion-body">
+                  A common goal for adults is about 150 minutes of moderate activity a week,
+                  such as brisk walking.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#q3"
+                  aria-expanded="false" aria-controls="q3">
+                  Where do I start if I'm a beginner?
+                </button>
+              </h2>
+              <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                <div class="accordion-body">
+                  Pick one small habit, such as a daily walk or an extra vegetable at dinner.
+                  Do it for two weeks, then add another.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center mt-4">
+            <a class="more" href="faq.html">See all questions <i class="bi bi-arrow-right"></i></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-4" id="newsletter">
+    <div class="container" data-aos="zoom-in">
+      <div class="news">
+        <h2>A little inspiration, every week</h2>
+        <p>Simple ideas for a healthier life, in your inbox.</p>
+
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="input-group">
+              <input id="email" type="email" class="form-control"
+                placeholder="Your email address" aria-label="Your email address">
+              <button id="joinBtn" class="btn btn-light" type="button">Join</button>
+            </div>
+            <p id="joinMsg" class="mt-3 mb-0" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <div>
+        <a class="brand" href="index.html">healthy living.</a>
+        <p class="small foot-note mb-0">A little inspiration. A healthier everyday.</p>
+      </div>
+
+      <div class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="about us.html">About us</a>
+        <a href="categories.html">Categories</a>
+        <a href="mental.html">Mental</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="d-flex flex-wrap justify-content-between foot-note small">
+      <span>&copy; <span id="year"></span> Healthy Living. Made for real life.</span>
+      <span>
+        <i class="bi bi-facebook me-2"></i>
+        <i class="bi bi-instagram me-2"></i>
+        <i class="bi bi-tiktok me-2"></i>
+        <i class="bi bi-youtube"></i>
+      </span>
+    </div>
+
+    <p class="small foot-note mt-2 mb-0">
+      For general inspiration only. Not a substitute for professional medical advice.
+    </p>
+  </div>
+</footer>
+
+<button id="topBtn" title="Back to top" aria-label="Back to top" type="button">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+
+  new Swiper(".sceneSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 16,
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2
+      },
+      1100: {
+        slidesPerView: 3
+      }
+    }
+  });
+
+  const counterObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+
+      const el = entry.target;
+      const target = Number(el.dataset.target);
+      let current = 0;
+      const step = Math.max(1, Math.ceil(target / 80));
+
+      const timer = setInterval(function () {
+        current += step;
+
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+
+        el.textContent = current.toLocaleString();
+      }, 20);
+
+      counterObserver.unobserve(el);
+    });
+  }, {
+    threshold: 0.5
+  });
+
+  document.querySelectorAll(".stat-num").forEach(function (number) {
+    counterObserver.observe(number);
+  });
+
+  document.getElementById("bmiBtn").addEventListener("click", function () {
+    const weight = parseFloat(document.getElementById("weight").value);
+    const heightCm = parseFloat(document.getElementById("height").value);
+    const result = document.getElementById("bmiResult");
+
+    if (
+      !Number.isFinite(weight) ||
+      !Number.isFinite(heightCm) ||
+      weight <= 0 ||
+      heightCm <= 0
+    ) {
+      result.textContent = "Please enter a valid weight and height.";
+      return;
+    }
+
+    const heightMetres = heightCm / 100;
+    const bmi = weight / (heightMetres * heightMetres);
+
+    let category = "in the healthy range";
+
+    if (bmi < 18.5) {
+      category = "below the healthy range";
+    } else if (bmi < 25) {
+      category = "in the healthy range";
+    } else if (bmi < 30) {
+      category = "above the healthy range";
+    } else {
+      category = "well above the healthy range";
+    }
+
+    result.textContent = "";
+
+    const prefix = document.createTextNode("Your BMI is ");
+    const value = document.createElement("strong");
+    value.textContent = bmi.toFixed(1);
+    const suffix = document.createTextNode(", which is " + category + ".");
+
+    result.append(prefix, value, suffix);
+  });
+
+  document.getElementById("joinBtn").addEventListener("click", function () {
+    const email = document.getElementById("email").value.trim();
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const message = document.getElementById("joinMsg");
+
+    message.textContent = validEmail
+      ? "Thank you for joining!"
+      : "Please enter a valid email address.";
+  });
+
+  const topBtn = document.getElementById("topBtn");
+
+  window.addEventListener("scroll", function () {
+    topBtn.style.display = window.scrollY > 400 ? "block" : "none";
+  });
+
+  topBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

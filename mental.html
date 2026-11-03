@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mental | Healthy Living</title>
+
+<meta name="description" content="Explore practical mental wellbeing tips, breathing exercises, mindfulness and healthy habits with Healthy Living.">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --teal: #0f6b66;
+    --teal-dark: #094d49;
+    --ink: #1f3a3a;
+    --muted: #5b6f6d;
+    --cream: #fdf8f3;
+    --mint: #bfeae4;
+    --peach: #fbd9c9;
+    --shadow: 0 10px 30px rgba(15, 60, 56, 0.13);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+}
+
+h1, h2, h3, h4, .brand {
+    font-family: 'Lora', serif;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 600;
+}
+
+img {
+    max-width: 100%;
+}
+
+.section-padding {
+    padding: 75px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0 auto 38px;
+}
+
+.small-label {
+    display: inline-block;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: .78rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+
+
+.site-nav {
+    background: rgba(253, 248, 243, .97);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .06);
+}
+
+.brand {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--teal);
+    text-decoration: none;
+}
+
+.brand:hover {
+    color: var(--teal-dark);
+}
+
+.site-nav .nav-link {
+    color: var(--ink);
+    font-size: .91rem;
+    font-weight: 500;
+    margin: 0 4px;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active {
+    color: var(--teal);
+}
+
+.site-nav .nav-link.active {
+    font-weight: 700;
+    border-bottom: 2px solid var(--teal);
+}
+
+.dropdown-menu {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 10px;
+}
+
+.dropdown-item {
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.dropdown-item:hover {
+    background: #e5f4f1;
+    color: var(--teal);
+}
+
+.btn-teal {
+    background: var(--teal);
+    color: white;
+    border: 2px solid var(--teal);
+    border-radius: 30px;
+    padding: 11px 23px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: .25s;
+}
+
+.btn-teal:hover {
+    background: var(--teal-dark);
+    border-color: var(--teal-dark);
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+
+.hero {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background:
+        linear-gradient(rgba(5, 43, 40, .65), rgba(5, 43, 40, .45)),
+        url('images/m5.jpg')
+        center / cover no-repeat;
+    padding: 100px 20px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero h1 {
+    font-size: clamp(2.7rem, 7vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 620px;
+    margin: 0 auto 30px;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.btn-light-pill {
+    background: white;
+    color: var(--teal-dark);
+    border-radius: 30px;
+    padding: 13px 26px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: .25s;
+}
+
+.btn-light-pill:hover {
+    background: var(--mint);
+    color: var(--teal-dark);
+    transform: translateY(-2px);
+}
+
+
+.carousel-section {
+    padding: 70px 0;
+}
+
+.feature-carousel {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--teal-dark);
+}
+
+.feature-carousel .carousel-item {
+    position: relative;
+    height: 480px;
+}
+
+.feature-carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-carousel .carousel-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(4, 36, 33, .78),
+        rgba(4, 36, 33, .25) 75%,
+        rgba(4, 36, 33, .08)
+    );
+}
+
+.feature-content {
+    position: absolute;
+    z-index: 2;
+    left: 9%;
+    bottom: 15%;
+    max-width: 520px;
+    color: white;
+}
+
+.feature-content h3 {
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature-content p {
+    font-size: 1.05rem;
+    max-width: 440px;
+}
+
+.feature-content .small-label {
+    color: #bfeae4;
+}
+
+.feature-carousel .carousel-indicators {
+    justify-content: flex-start;
+    margin-left: 9%;
+    margin-bottom: 30px;
+    z-index: 3;
+}
+
+.feature-carousel .carousel-indicators button {
+    width: 35px;
+    height: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-right: 7px;
+}
+
+.feature-carousel .carousel-control-prev,
+.feature-carousel .carousel-control-next {
+    z-index: 4;
+    width: 8%;
+}
+
+.feature-carousel .carousel-control-prev-icon,
+.feature-carousel .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 50%;
+    padding: 24px;
+    background-size: 50%;
+}
+
+
+
+.intro-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.intro-card h3 {
+    margin-bottom: 15px;
+}
+
+.intro-card p {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+.intro-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 15px;
+    background: #e5f4f1;
+    color: var(--teal);
+    font-size: 1.5rem;
+    margin-bottom: 22px;
+}
+
+
+
+.breath-section {
+    padding: 80px 0;
+    color: white;
+    text-align: center;
+    background:
+        linear-gradient(rgba(6, 52, 48, .82), rgba(6, 52, 48, .82)),
+        url('images/s8.jpg')
+        center / cover no-repeat;
+}
+
+.breath-section .section-subtitle {
+    color: #d9f0ec;
+}
+
+.breath-circle {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    margin: 35px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--teal-dark);
+    background: radial-gradient(circle, #fff, #91dcd0);
+    box-shadow: 0 0 0 14px rgba(255,255,255,.13),
+                0 0 45px rgba(127,208,197,.45);
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: transform 4s ease-in-out;
+}
+
+.breath-circle.in {
+    transform: scale(1.25);
+    transition-duration: 4s;
+}
+
+.breath-circle.out {
+    transform: scale(1);
+    transition-duration: 6s;
+}
+
+
+
+.mood-section {
+    background: #f2faf8;
+}
+
+.mood-btn {
+    background: white;
+    border: 1px solid #c8dbd7;
+    border-radius: 30px;
+    color: var(--ink);
+    padding: 12px 23px;
+    margin: 6px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.mood-btn:hover,
+.mood-btn.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+}
+
+.mood-message {
+    max-width: 620px;
+    min-height: 55px;
+    margin: 25px auto 0;
+    color: var(--teal-dark);
+    font-weight: 500;
+}
+
+/* HABIT CARDS */
+
+.habit-card {
+    background: white;
+    height: 100%;
+    border: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform .25s, box-shadow .25s;
+}
+
+.habit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 35px rgba(15, 60, 56, .17);
+}
+
+.habit-card img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.habit-card .card-body {
+    padding: 25px;
+}
+
+.habit-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.habit-card p {
+    color: var(--muted);
+    font-size: .95rem;
+    margin: 0;
+}
+
+
+.quote-section {
+    padding: 90px 20px;
+    text-align: center;
+    color: white;
+    background:
+        linear-gradient(rgba(7, 59, 55, .68), rgba(7, 59, 55, .68)),
+        url('images/m20.jpg')
+        center / cover no-repeat;
+}
+
+.quote-section blockquote {
+    max-width: 850px;
+    margin: auto;
+    font-family: 'Lora', serif;
+    font-size: clamp(1.6rem, 3.8vw, 2.7rem);
+    font-style: italic;
+}
+
+
+
+.reach-card {
+    padding: 35px;
+    border-radius: 18px;
+    border-left: 6px solid var(--teal);
+    background: linear-gradient(135deg, var(--peach), #fff1e8);
+}
+
+.reach-card p {
+    margin-bottom: 10px;
+}
+
+.reach-card small {
+    color: #6b5f58;
+}
+
+
+
+.site-footer {
+    margin-top: 70px;
+    padding: 45px 0 20px;
+    background: #e9f3f0;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: .9rem;
+}
+
+.footer-links a:hover {
+    color: var(--teal);
+    text-decoration: underline;
+}
+
+.footer-note {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+:focus-visible {
+    outline: 3px solid #e59a58;
+    outline-offset: 3px;
+}
+
+
+
+@media (max-width: 991px) {
+    .site-nav .nav-link.active {
+        border-bottom: 0;
+    }
+
+    .site-nav .btn-teal {
+        margin: 10px 0 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-padding {
+        padding: 55px 0;
+    }
+
+    .hero {
+        min-height: 60vh;
+        padding: 75px 18px;
+    }
+
+    .feature-carousel .carousel-item {
+        height: 390px;
+    }
+
+    .feature-content {
+        left: 8%;
+        right: 8%;
+        bottom: 14%;
+    }
+
+    .feature-content h3 {
+        font-size: 2rem;
+    }
+
+    .feature-content p {
+        font-size: .93rem;
+    }
+
+    .feature-carousel .carousel-control-prev,
+    .feature-carousel .carousel-control-next {
+        width: 12%;
+    }
+
+    .intro-card,
+    .reach-card {
+        padding: 25px;
+    }
+
+    .habit-card img {
+        height: 210px;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-carousel .carousel-item {
+        height: 360px;
+    }
+
+    .feature-content h3 {
+        font-size: 1.7rem;
+    }
+
+    .mood-btn {
+        padding: 10px 16px;
+        font-size: .9rem;
+    }
+
+    .breath-circle {
+        width: 150px;
+        height: 150px;
+    }
+
+    .footer-links {
+        gap: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-expand-lg site-nav sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand brand" href="index.html">healthy living.</a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainMenu"
+                aria-controls="mainMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainMenu">
+
+            <ul class="navbar-nav mx-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about us.html">About us</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="categories.html"
+                       role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">Categories</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="categories.html#eating">Healthy eating</a></li>
+                        <li><a class="dropdown-item" href="categories.html#fitness">Fitness and movement</a></li>
+                        <li><a class="dropdown-item" href="categories.html#mindful">Mindful living</a></li>
+                        <li><a class="dropdown-item" href="categories.html#sleep">Better sleep</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="mental.html" aria-current="page">Mental</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">Gallery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="faq.html">FAQ</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+
+            <a href="contact.html" class="btn-teal">Live a little better</a>
+
+        </div>
+    </div>
+</nav>
+
+
+<header class="hero">
+    <div class="container hero-content">
+
+        <span class="small-label text-white">Your mind matters</span>
+
+        <h1>Mental </h1>
+
+        <p>
+            Discover simple ways to manage stress, care for your emotions
+            and create a calmer, healthier everyday life.
+        </p>
+
+        <a href="#breathe" class="btn-light-pill">
+            Take a breathing break
+        </a>
+
+    </div>
+</header>
+
+<main>
+
+
+<section class="carousel-section">
+    <div class="container">
+
+        <div id="wellbeingCarousel"
+             class="carousel slide feature-carousel"
+             data-bs-ride="carousel"
+             data-bs-interval="5000">
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#wellbeingCarousel"
+                        data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+
+                <button type="button" data-bs-target="#wellbeingCarousel"
+                        data-bs-slide-to="1" aria-label="Slide 2"></button>
+
+                <button type="button" data-bs-target="#wellbeingCarousel"
+                        data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <img
+                        src="images/m4.jpg"
+                        alt="A peaceful mindfulness and meditation setting">
+
+                    <div class="feature-content">
+                        <span class="small-label">01 / Mindfulness</span>
+                        <h3>Make room for peace</h3>
+                        <p>Pause, notice the present moment and give yourself time to breathe.</p>
+                        <a href="#breathe" class="btn-light-pill">Try a breathing exercise</a>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/m10.jpg"
+                        alt="Sunlight rising over a peaceful landscape">
+
+                    <div class="feature-content">
+                        <span class="small-label">02 / Fresh beginnings</span>
+                        <h3>Start with small steps</h3>
+                        <p>You do not need to change everything today. One healthy habit is a good beginning.</p>
+                        <a href="#habits" class="btn-light-pill">Explore healthy habits</a>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/m2.jpg"
+                        alt="A quiet green forest surrounded by trees">
+
+                    <div class="feature-content">
+                        <span class="small-label">03 / Rest and recovery</span>
+                        <h3>Give yourself time to rest</h3>
+                        <p>Time outdoors, regular sleep and quiet moments can support your wellbeing.</p>
+                        <a href="#habits" class="btn-light-pill">Discover simple habits</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="carousel-control-prev" type="button"
+                    data-bs-target="#wellbeingCarousel" data-bs-slide="prev"
+                    aria-label="Previous slide">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button"
+                    data-bs-target="#wellbeingCarousel" data-bs-slide="next"
+                    aria-label="Next slide">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="section-padding pt-0">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <span class="small-label">Understanding your mind</span>
+            <h2 class="section-title">Your mental wellbeing matters</h2>
+            <p class="section-subtitle">
+                Mental wellbeing includes how we think, feel, cope with
+                challenges and connect with other people.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="intro-card">
+                   
+                    <h3 class="h4">Understand your feelings</h3>
+                    <p>
+                        Give yourself time to identify your emotions without
+                        judging yourself. Understanding your feelings can
+                        help you decide what support you need.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="intro-card">
+                   
+                    <h3 class="h4">Create time to recharge</h3>
+                    <p>
+                        Take breaks, spend time outside and make space for
+                        activities that help you feel relaxed and refreshed.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="intro-card">
+                 
+                    <h3 class="h4">Stay connected</h3>
+                    <p>
+                        Talking with trusted friends, family members or
+                        professionals can help you feel supported during
+                        difficult times.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="breathe" class="breath-section">
+    <div class="container">
+
+        <span class="small-label text-white">Pause and reset</span>
+
+        <h2 class="section-title">Take a breathing break</h2>
+
+        <p class="section-subtitle">
+            Breathe in gently for four seconds and breathe out slowly
+            for six seconds. Follow the circle at a comfortable pace.
+            Stop if you feel dizzy or uncomfortable.
+        </p>
+
+        <div id="breathCircle" class="breath-circle" aria-live="polite">
+            <span id="breathText">Ready?</span>
+        </div>
+
+        <button id="breathButton" type="button"
+                class="btn-light-pill border-0">
+            Start breathing
+        </button>
+
+        <p class="mt-3 mb-0 small">
+            You can stop whenever you want.
+        </p>
+
+    </div>
+</section>
+
+
+<section class="section-padding mood-section">
+    <div class="container text-center">
+
+        <span class="small-label">A moment for yourself</span>
+
+        <h2 class="section-title">How are you feeling today?</h2>
+
+        <p class="section-subtitle">
+            Choose the description that best matches how you feel right now.
+            There is no right or wrong answer.
+        </p>
+
+        <div role="group" aria-label="Choose how you are feeling">
+
+            <button type="button" class="mood-btn"
+                    data-mood="great" aria-pressed="false">
+                Great
+            </button>
+
+            <button type="button" class="mood-btn"
+                    data-mood="okay" aria-pressed="false">
+                Okay
+            </button>
+
+            <button type="button" class="mood-btn"
+                    data-mood="low" aria-pressed="false">
+                Feeling low
+            </button>
+
+            <button type="button" class="mood-btn"
+                    data-mood="stressed" aria-pressed="false">
+                Stressed
+            </button>
+
+        </div>
+
+        <p id="moodMessage" class="mood-message" aria-live="polite"></p>
+
+    </div>
+</section>
+
+
+<section id="habits" class="section-padding">
+    <div class="container">
+
+        <span class="small-label d-block text-center">Everyday wellbeing</span>
+
+        <h2 class="section-title">Six gentle habits for a healthier mind</h2>
+
+        <p class="section-subtitle">
+            Start with one habit that feels manageable. Small actions
+            practised regularly can help support your wellbeing.
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card habit-card">
+                    <img
+                        src="images/medi.jpg"
+                        class="card-img-top"
+                        alt="A peaceful setting for meditation"
+                        loading="lazy">
+
+                    <div class="card-body">
+                        <h3>1. Check in with yourself</h3>
+                        <p>
+                            Pause each day and ask yourself how you feel.
+                            Naming your emotions can help you understand
+                            what you need.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card habit-card">
+                    <img
+                        src="images/walk.jpg"
+                        class="card-img-top"
+                        alt="Mountains and a natural landscape"
+                        loading="lazy">
+
+                    <div class="card-body">
+                        <h3>2. Move your body</h3>
+                        <p>
+                            Walk, stretch, dance or take part in another
+                            activity you enjoy. Choose movement that suits
+                            your abilities.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card habit-card">
+                    <img
+                        src="images/connect.jpg"
+                        class="card-img-top"
+                        alt="People enjoying time together"
+                        loading="lazy">
+
+                    <div class="card-body">
+                        <h3>3. Stay connected</h3>
+                        <p>
+                            Make time to talk to a friend or family member.
+                            Listening and sharing experiences can provide
+                            valuable emotional support.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card habit-card">
+                    <img
+                        src="images/sleepy.jpg"
+                        class="card-img-top"
+                        alt="A calm yoga and relaxation practice"
+                        loading="lazy">
+
+                    <div class="card-body">
+                        <h3>4. Protect your sleep</h3>
+                        <p>
+                            Keep a regular bedtime where possible and
+                            create a relaxing routine before sleeping.
+                            Adequate rest supports overall wellbeing.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card habit-card">
+                    <img
+                        src="images/s4.webp"
+                        class="card-img-top"
+                        alt="Sunlight passing through a green forest"
+                        loading="lazy">
+
+                    <div class="card-body">
+                        <h3>5. Take breaks from screens</h3>
+                        <p>
+                            Step away from your phone or computer when
+                            you need a break. Choose activities that
+                            help you feel present and relaxed.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card habit-card">
+                    <img
+                        src="images/m8.jpg"
+                        class="card-img-top"
+                        alt="Warm sunrise over a peaceful landscape"
+                        loading="lazy">
+
+                    <div class="card-body">
+                        <h3>6. Ask for support</h3>
+                        <p>
+                            Speak with someone you trust when life feels
+                            difficult. Seeking professional support is
+                            a positive step towards caring for yourself.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="quote-section">
+    <div class="container">
+        <span class="small-label text-white">A gentle reminder</span>
+
+        <blockquote>
+            “Take care of your mind the way you take care of your body.”
+        </blockquote>
+
+        <p class="mt-4 mb-0">
+            Your wellbeing deserves time, patience and kindness.
+        </p>
+    </div>
+</section>
+
+
+<section class="section-padding pb-0">
+    <div class="container">
+
+        <div class="reach-card">
+            <h2 class="h3 mb-3">When to seek support</h2>
+
+            <p>
+                Everyone experiences difficult days. However, if feelings
+                of sadness, anxiety or hopelessness persist, affect daily
+                activities or become difficult to manage, consider speaking
+                with a qualified health professional, counsellor or someone
+                you trust.
+            </p>
+
+            <p>
+                If you or someone else is in immediate danger, seek urgent
+                help from local emergency services or the nearest health
+                facility.
+            </p>
+
+            <small>
+                This website provides general wellbeing information.
+                It does not replace professional medical advice,
+                diagnosis or treatment.
+            </small>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="row g-4 align-items-start">
+
+            <div class="col-lg-5">
+                <a class="brand" href="index.html">healthy living.</a>
+
+                <p class="mt-2 mb-0">
+                    Simple ideas for a healthier, happier everyday life.
+                </p>
+            </div>
+
+            <div class="col-lg-7">
+                <nav class="footer-links justify-content-lg-end"
+                     aria-label="Footer navigation">
+                    <a href="index.html">Home</a>
+                    <a href="about us.html">About us</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="mental.html">Mental </a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+
+        </div>
+
+        <hr class="my-4">
+
+        <p class="footer-note mb-0">
+            &copy; 2026 Healthy Living. Made for a life well lived.
+            General wellbeing information only.
+        </p>
+
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+
+const breathCircle = document.getElementById('breathCircle');
+const breathText = document.getElementById('breathText');
+const breathButton = document.getElementById('breathButton');
+
+let breathing = false;
+let breathInterval = null;
+let breathTimeout = null;
+
+function clearBreathingTimers() {
+    clearInterval(breathInterval);
+    clearTimeout(breathTimeout);
+
+    breathInterval = null;
+    breathTimeout = null;
+}
+
+function runBreathingRound() {
+    if (!breathing) return;
+
+    clearTimeout(breathTimeout);
+
+    breathCircle.className = 'breath-circle in';
+    breathText.textContent = 'Breathe in';
+
+    breathTimeout = setTimeout(() => {
+        if (!breathing) return;
+
+        breathCircle.className = 'breath-circle out';
+        breathText.textContent = 'Breathe out';
+    }, 4000);
+}
+
+breathButton.addEventListener('click', () => {
+    if (!breathing) {
+        breathing = true;
+
+        runBreathingRound();
+
+        breathInterval = setInterval(runBreathingRound, 10000);
+
+        breathButton.textContent = 'Stop breathing exercise';
+        breathButton.setAttribute('aria-pressed', 'true');
+    } else {
+        breathing = false;
+
+        clearBreathingTimers();
+
+        breathCircle.className = 'breath-circle';
+        breathText.textContent = 'Ready?';
+
+        breathButton.textContent = 'Start breathing';
+        breathButton.setAttribute('aria-pressed', 'false');
+    }
+});
+
+
+
+const moodMessages = {
+    great: "It is good to feel well. Notice what is helping you and make time for those positive habits.",
+    okay: "It is okay to have ordinary days. Consider taking a short walk, drinking some water or resting for a while.",
+    low: "Be patient and gentle with yourself. Try a small activity you enjoy or talk to someone you trust.",
+    stressed: "Pause and take a few comfortable breaths. Break difficult tasks into smaller steps and seek support if needed."
+};
+
+const moodButtons = document.querySelectorAll('.mood-btn');
+const moodMessage = document.getElementById('moodMessage');
+
+moodButtons.forEach(button => {
+    button.addEventListener('click', () => {
+
+        moodButtons.forEach(item => {
+            item.classList.remove('active');
+            item.setAttribute('aria-pressed', 'false');
+        });
+
+        button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
+
+        moodMessage.textContent = moodMessages[button.dataset.mood];
+    });
+});
+
+
+
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const carouselElement = document.getElementById('wellbeingCarousel');
+
+    bootstrap.Carousel.getOrCreateInstance(carouselElement, {
+        interval: false,
+        ride: false
+    });
+}
+</script>
+
+</body>
+</html>
+
